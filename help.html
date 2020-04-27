@@ -35,13 +35,19 @@
                 <li>
                     <div class="row" id="login">
                         <div class="col-12">
-                            <a class="btn btn-outline-dark" href="/users/googleauth" role="button"
-                                style="text-transform:none">
+                            <a class="btn btn-outline-dark"
+                                href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
+                                role="button" style="text-transform:none">
                                 <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
                                     src="./assets/google.webp" alt="Google sign-in">
                                 Login with Google
                             </a>
                         </div>
+                    </div>
+                    <div class="row" id="user-details" style="display:none">
+                        <div id="user-name"></div>
+                        <div id="user-email"></div>
+                        <img src="" id="user-pic" style="height : 200px; width : 200px; border-radius : 50%">
                     </div>
                 </li>
             </ul>
@@ -56,6 +62,14 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                Post Request
+            </div>
+            <div class="col-12 col-lg-6">
+                <button id="all-request" class="btn btn-primary"><strong>See All Requests</strong></button>
+            </div>
+        </div>
         <div class="row" style="margin-top:50px;">
             <div class="col-12 col-lg-2"></div>
             <div class="col-12 col-lg-8">
@@ -77,7 +91,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-2"></div>
-        </div> 
+        </div>
 
         <div class="row" style="margin-top:30px;">
             <div class="col-12 col-lg-2"></div>
@@ -105,6 +119,7 @@
         </div>
     </div>
 
+    <script src="./js/auth-token.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//geodata.solutions/includes/statecity.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -118,9 +133,49 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("preloader").style.display = "block";
-        window.onload = function() {
+        if () {
+            fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
+                method: 'GET',
+                headers: {
+                    Authorization: token
+                }
+            })
+                .then(data => {
+                    return data.json()
+                })
+                .then(res => {
+                    if (res.status == 401) {
+                        //token is either expired or invalid
+                        document.getElementById("login").style.display = "block";
+                        document.getElementById("user-details").style.display = "none";
+                    }
+                    else {
+                        document.getElementById("login").style.display = "none";
+                        document.getElementById('user-name').innerHTML = res.name;
+                        document.getElementById('user-email').innerHTML = res.email;
+                        document.getElementById('user-pic').setAttribute('src', res.profile_pic);
+                    }
+                })
+        }
+        else{
+            document.getElementById("login").style.display = "block";
+        }
+
+        window.onload = function () {
             document.getElementById("preloader").style.display = "none";
         }
+
+		// let url_string = window.location.href;
+		// let url = new URL(url_string);
+		// let name = url.searchParams.get("name");
+		// let email = url.searchParams.get("email");
+		// let sessionID = url.searchParams.get("sessionID");
+		// let image = url.searchParams.get("image");
+		// localStorage.setItem('ABC19_SID', sessionID);
+		// document.getElementById('user-name').innerHTML = name;
+		// document.getElementById('user-email').innerHTML = email;
+		// document.getElementById('user-pic').setAttribute('src', image);
+
     </script>
 
 </body>
