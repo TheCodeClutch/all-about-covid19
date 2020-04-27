@@ -18,4 +18,17 @@ fetch('https://api.covid19india.org/data.json')
 
 window.onload = () => {
 		document.getElementById("preloader").style.display = "none";
+		window.addEventListener('resize', () => {
+			if(window.outerWidth < 990){
+				document.getElementById('c').innerHTML = 'Conf';
+				document.getElementById('a').innerHTML = 'Act';
+				document.getElementById('r').innerHTML = 'Rec';
+				document.getElementById('d').innerHTML = 'Dead';
+			} else {
+				document.getElementById('c').innerHTML = 'Confirmed';
+				document.getElementById('a').innerHTML = 'Active';
+				document.getElementById('r').innerHTML = 'Recovered';
+				document.getElementById('d').innerHTML = 'Deceased';
+			}
+		})
 }

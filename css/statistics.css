@@ -5,14 +5,53 @@
 	text-align: center;
 	background: white url('../assets/preloader.gif') center center no-repeat;
 }
-.count {
-	padding-top : 10px; 
-	padding-bottom : 10px; 
-	font-weight: 600; 
-	font-size: 24px;
+
+#cover-c{
+	color: #FF073A;
+}
+#cover-a{
+	color: #007bff
+}
+#cover-r{
+	color: #28a745
+}
+#cover-d{
+	color: #6c757d
+}
+@media only screen and (min-width: 900px) {
+	.count {
+		padding-top : 10px; 
+		padding-bottom : 10px; 
+		font-weight: 600; 
+		font-size: 24px;
+	}
+	
+	.title-count {
+		font-weight: 600; 
+		padding-top : 10px; 
+		padding-bottom : 10px
+	}
+
+	.inc-section {
+		font-size: 14px;
+	}
 }
 
-.title-count {
-	padding-top : 10px; 
-	padding-bottom : 10px
+@media only screen and (max-width: 900px) {
+	.count {
+		padding-top : 10px; 
+		padding-bottom : 10px; 
+		font-weight: 600; 
+		font-size: 15px;
+	}
+	
+	.title-count {
+		font-weight: 600; 
+		padding-top : 10px; 
+		padding-bottom : 10px;
+		font-size: 12px
+	}
+	.inc-section {
+		font-size: 10px;
+	}
 }
