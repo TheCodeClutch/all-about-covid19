@@ -33,13 +33,7 @@
                     <a class="nav-link" href="./statistics.html">Statistics</a>
                 </li>
                 <li>
-                    <a id="login" class="btn btn-outline-dark"
-                        href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
-                        role="button" style="text-transform:none">
-                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
-                            src="./assets/google.webp" alt="Google sign-in">
-                        Login with Google
-                    </a>
+                    <span id="login"></span>
                     <span id="user-pic"></span><span id="user-name"></span>
                 </li>
             </ul>
@@ -135,11 +129,15 @@
                 })
                 let res = await resp.json()
                 if (res.status === 401) {
-                    //token is either expired or invalid
-                    document.getElementById("login").style.display = "block";
+                    document.getElementById("login").innerHTML = `<a class="btn btn-outline-dark"
+                        href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
+                        role="button" style="text-transform:none">
+                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
+                            src="./assets/google.webp" alt="Google sign-in">
+                        Login with Google
+                    </a>`;
                 }
                 else {
-                    document.getElementById("login").style.display = "none";
                     document.getElementById('user-name').innerHTML = res.name;
                     document.getElementById('user-pic').innerHTML = `<img src="${res.profile_pic}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
                 }
@@ -154,7 +152,6 @@
             localStorage.setItem('ABC19_SID', sessionID);
             document.getElementById('user-name').innerHTML = name;
             document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
-            document.getElementById("login").style.display = "none";
             isUpdatedfromURL = true;
         }
 
