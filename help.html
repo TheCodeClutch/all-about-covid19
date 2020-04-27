@@ -5,7 +5,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<a href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Login</a>
+	<a href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Login</a>
 	
 	Help page of The Code Clutch
 	
@@ -26,6 +26,8 @@
 		document.getElementById('user-email').innerHTML = email;
 		document.getElementById('user-pic').setAttribute('src', image);
 	</script>
+
+	<script src="./js/auth-token.js"></script>
 
 </body>
 </html>
