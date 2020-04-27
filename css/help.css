@@ -33,3 +33,7 @@ select, input, textarea {
     margin-right : 20px;
     margin-left : 10px
 }
+
+select, option {
+    background-color: white;
+}
