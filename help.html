@@ -130,7 +130,7 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("preloader").style.display = "block";
-
+        let isUpdatedfromURL = false;
         async function loginCheck() {
             if (localStorage.getItem('ABC19_SID') !== null) {
                 let resp = await fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
@@ -148,24 +148,23 @@
                 else {
                     document.getElementById("login").style.display = "none";
                     document.getElementById('user-name').innerHTML = res.name;
-                    document.getElementById('user-email').innerHTML = res.email;
                     document.getElementById('user-pic').setAttribute('src', res.profile_pic);
                     document.getElementById("user-details").style.display = "block";
                 }
                   
             }
         }
-        function updateLoginWithUrl(url){
-            let name = url.searchParams.get("name");
-            let email = url.searchParams.get("email");
-            let sessionID = url.searchParams.get("sessionID");
-            let image = url.searchParams.get("image");
+        async function updateLoginWithUrl(url){
+            let name = await url.searchParams.get("name");
+            let email = await url.searchParams.get("email");
+            let sessionID = await url.searchParams.get("sessionID");
+            let image = await url.searchParams.get("image");
             localStorage.setItem('ABC19_SID', sessionID);
             document.getElementById('user-name').innerHTML = name;
-            document.getElementById('user-email').innerHTML = email;
             document.getElementById('user-pic').setAttribute('src', image);
             document.getElementById("login").style.display = "none";
             document.getElementById("user-details").style.display = "block";
+            isUpdatedfromURL = true;
         }
 
         let url_string = window.location.href;
@@ -173,7 +172,9 @@
         if(url.searchParams.get("name") !== null){
             updateLoginWithUrl(url);
         }
-        loginCheck();
+        if(!isUpdatedfromURL){
+            loginCheck();
+        }
         window.onload = function () {
             document.getElementById("preloader").style.display = "none";
         }
