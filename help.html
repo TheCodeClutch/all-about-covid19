@@ -143,7 +143,7 @@
                     return data.json()
                 })
                 .then(res => {
-                    if (res.status == 401) {
+                    if (res.status === 401) {
                         //token is either expired or invalid
                         document.getElementById("login").style.display = "block";
                         document.getElementById("user-details").style.display = "none";
