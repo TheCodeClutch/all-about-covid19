@@ -33,22 +33,14 @@
                     <a class="nav-link" href="./statistics.html">Statistics</a>
                 </li>
                 <li>
-                    <div class="row" id="login">
-                        <div class="col-12">
-                            <a class="btn btn-outline-dark"
-                                href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
-                                role="button" style="text-transform:none;">
-                                <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
-                                    src="./assets/google.webp" alt="Google sign-in">
-                                Login with Google
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row" id="user-details" style="display:none">
-                        <div id="user-name"></div>
-                        <div id="user-email"></div>
-                        <img src="" id="user-pic" style="height : 50px; width : 50px; border-radius : 50%">
-                    </div>
+                    <a id="login" class="btn btn-outline-dark"
+                        href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
+                        role="button" style="text-transform:none">
+                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
+                            src="./assets/google.webp" alt="Google sign-in">
+                        Login with Google
+                    </a>
+                    <span id="user-pic"></span><span id="user-name"></span>
                 </li>
             </ul>
 
@@ -128,11 +120,10 @@
     </div>
 
     <script src="./js/auth-token.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <script src="//geodata.solutions/includes/statecity.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -141,48 +132,51 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("preloader").style.display = "block";
-        if (localStorage.getItem("ABC19_SID") !== null && localStorage.getItem("ABC19_SID") !== undefined) {
-            fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
-                method: 'GET',
-                headers: {
-                    Authorization: localStorage.getItem("ABC19_SID")
+        let isUpdatedfromURL = false;
+        async function loginCheck() {
+            if (localStorage.getItem('ABC19_SID') !== null) {
+                let resp = await fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
+                    method: 'GET',
+                    headers: {
+                        Authorization: localStorage.getItem('ABC19_SID')
+                    }
+                })
+                let res = await resp.json()
+                if (res.status === 401) {
+                    //token is either expired or invalid
+                    document.getElementById("login").style.display = "block";
                 }
-            })
-                .then(data => {
-                    return data.json()
-                })
-                .then(res => {
-                    if (res.status == 401) {
-                        //token is either expired or invalid
-                        document.getElementById("login").style.display = "block";
-                        document.getElementById("user-details").style.display = "none";
-                    }
-                    else {
-                        document.getElementById("login").style.display = "none";
-                        document.getElementById('user-name').innerHTML = res.name;
-                        document.getElementById('user-email').innerHTML = res.email;
-                        document.getElementById('user-pic').setAttribute('src', res.profile_pic);
-                    }
-                })
+                else {
+                    document.getElementById("login").style.display = "none";
+                    document.getElementById('user-name').innerHTML = res.name;
+                    document.getElementById('user-pic').innerHTML = `<img src="${res.profile_pic}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
+                }
+                  
+            }
         }
-        else{
-            document.getElementById("login").style.display = "block";
+        async function updateLoginWithUrl(url){
+            let name = await url.searchParams.get("name");
+            let email = await url.searchParams.get("email");
+            let sessionID = await url.searchParams.get("sessionID");
+            let image = await url.searchParams.get("image");
+            localStorage.setItem('ABC19_SID', sessionID);
+            document.getElementById('user-name').innerHTML = name;
+            document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
+            document.getElementById("login").style.display = "none";
+            isUpdatedfromURL = true;
         }
 
+        let url_string = window.location.href;
+        let url = new URL(url_string);
+        if(url.searchParams.get("name") !== null){
+            updateLoginWithUrl(url);
+        }
+        if(!isUpdatedfromURL){
+            loginCheck();
+        }
         window.onload = function () {
             document.getElementById("preloader").style.display = "none";
         }
-
-		// let url_string = window.location.href;
-		// let url = new URL(url_string);
-		// let name = url.searchParams.get("name");
-		// let email = url.searchParams.get("email");
-		// let sessionID = url.searchParams.get("sessionID");
-		// let image = url.searchParams.get("image");
-		// localStorage.setItem('ABC19_SID', sessionID);
-		// document.getElementById('user-name').innerHTML = name;
-		// document.getElementById('user-email').innerHTML = email;
-		// document.getElementById('user-pic').setAttribute('src', image);
 
     </script>
 
