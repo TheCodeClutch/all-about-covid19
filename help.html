@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/help.css">
+    <title>COVID'19|HELP</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" id="preloader"></div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+        <a class="navbar-brand" href="#">COVID-19</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="padding-left : 20px; padding-right : 20px">
+                    <a class="nav-link" href="index.html">Information</a>
+                </li>
+                <li class="nav-item" style="padding-left : 20px; padding-right : 20px">
+                    <a class="nav-link" href="./statistics.html">Statistics</a>
+                </li>
+                <li>
+                    <div class="row" id="login">
+                        <div class="col-12">
+                            <a class="btn btn-outline-dark" href="/users/googleauth" role="button"
+                                style="text-transform:none">
+                                <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
+                                    src="./assets/google.webp" alt="Google sign-in">
+                                Login with Google
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row" style="text-align:center">
+            <div class="col-12" style="margin-top: 50px;">
+                <h2>Help Station</h2>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:50px;">
+            <div class="col-12 col-lg-2"></div>
+            <div class="col-12 col-lg-8">
+                <div class="row">
+                    <div class="col-6" style="text-align:center">
+                        <input type="hidden" name="country" id="countryId" value="IN" />
+                        <label for="stateId">State<sup>*</sup></label>
+                        <select name="state" class="states order-alpha" id="stateId">
+                            <option value="">Select State</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6" style="text-align:center">
+                        <label for="cityId">City<sup>*</sup></label>
+                        <select name="city" class="cities order-alpha" id="cityId">
+                            <option value="">Select City</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-2"></div>
+        </div> 
+
+        <div class="row" style="margin-top:30px;">
+            <div class="col-12 col-lg-2"></div>
+            <div class="col-12 col-lg-8" style="text-align:center">
+                <input type="text" id="title" placeholder="Title">
+            </div>
+            <div class="col-12 col-lg-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-2"></div>
+            <div class="col-12 col-lg-8" style="text-align:center">
+                <label for="message" id="message">Request<sup>*</sup></label>
+                <textarea placeholder="Description" style="min-height:150px;"></textarea>
+            </div>
+            <div class="col-12 col-lg-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-2"></div>
+            <div class="col-12 col-lg-8" style="margin-top:30px; text-align:center">
+                <button id="submit-btn" class="btn btn-primary"><strong>Send Request</strong></button>
+            </div>
+            <div class="col-12 col-lg-2"></div>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//geodata.solutions/includes/statecity.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById("preloader").style.display = "block";
+        window.onload = function() {
+            document.getElementById("preloader").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
