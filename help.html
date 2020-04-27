@@ -172,8 +172,10 @@
             document.getElementById('user-name').innerHTML = name;
             document.getElementById('user-email').innerHTML = email;
             document.getElementById('user-pic').setAttribute('src', image);
-            document.getElementById("login").style.display = "none";
-            document.getElementById("user-details").style.display = "block";
+            if(localStorage.getItem('ABC19_SID') !== null){
+                document.getElementById("login").style.display = "none";
+                document.getElementById("user-details").style.display = "block";
+            }
         }
 
     </script>
