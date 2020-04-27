@@ -142,6 +142,8 @@
                     document.getElementById('user-pic').innerHTML = `<img src="${res.profile_pic}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
                 }
                   
+            } else {
+                document.getElementById("login").style.display = "block";
             }
         }
         async function updateLoginWithUrl(url){
