@@ -122,9 +122,7 @@
     <script src="./js/auth-token.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//geodata.solutions/includes/statecity.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -133,11 +131,11 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("preloader").style.display = "block";
-        if () {
+        if (localStorage.getItem('ABC19_SID') !== null) {
             fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
                 method: 'GET',
                 headers: {
-                    Authorization: token
+                    Authorization: localStorage.getItem('ABC19_SID')
                 }
             })
                 .then(data => {
@@ -165,16 +163,16 @@
             document.getElementById("preloader").style.display = "none";
         }
 
-		// let url_string = window.location.href;
-		// let url = new URL(url_string);
-		// let name = url.searchParams.get("name");
-		// let email = url.searchParams.get("email");
-		// let sessionID = url.searchParams.get("sessionID");
-		// let image = url.searchParams.get("image");
-		// localStorage.setItem('ABC19_SID', sessionID);
-		// document.getElementById('user-name').innerHTML = name;
-		// document.getElementById('user-email').innerHTML = email;
-		// document.getElementById('user-pic').setAttribute('src', image);
+		let url_string = window.location.href;
+		let url = new URL(url_string);
+		let name = url.searchParams.get("name");
+		let email = url.searchParams.get("email");
+		let sessionID = url.searchParams.get("sessionID");
+		let image = url.searchParams.get("image");
+		localStorage.setItem('ABC19_SID', sessionID);
+		document.getElementById('user-name').innerHTML = name;
+		document.getElementById('user-email').innerHTML = email;
+		document.getElementById('user-pic').setAttribute('src', image);
 
     </script>
 
