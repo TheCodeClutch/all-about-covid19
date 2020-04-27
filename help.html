@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="row" id="user-details" >
-                        <img src="" id="user-pic" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px"><span id="user-name"></span>
+                        <span id="user-pic"></span><span id="user-name"></span>
                     </div>
                 </li>
             </ul>
@@ -148,7 +148,7 @@
                 else {
                     document.getElementById("login").style.display = "none";
                     document.getElementById('user-name').innerHTML = res.name;
-                    document.getElementById('user-pic').setAttribute('src', res.profile_pic);
+                    document.getElementById('user-pic').innerHTML = `<img src="${res.profile_pic}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
                     document.getElementById("user-details").style.display = "block";
                 }
                   
@@ -161,7 +161,7 @@
             let image = await url.searchParams.get("image");
             localStorage.setItem('ABC19_SID', sessionID);
             document.getElementById('user-name').innerHTML = name;
-            document.getElementById('user-pic').setAttribute('src', image);
+            document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
             document.getElementById("login").style.display = "none";
             document.getElementById("user-details").style.display = "block";
             isUpdatedfromURL = true;
