@@ -33,7 +33,13 @@
                     <a class="nav-link" href="./statistics.html">Statistics</a>
                 </li>
                 <li>
-                    <span id="login"></span>
+                    <a id="login" class="btn btn-outline-dark"
+                        href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
+                        role="button" style="text-transform:none">
+                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
+                            src="./assets/google.webp" alt="Google sign-in">
+                        Login with Google
+                    </a>
                     <span id="user-pic"></span><span id="user-name"></span>
                 </li>
             </ul>
@@ -60,46 +66,35 @@
             <div class="col-12 col-lg-2"></div>
             <div class="col-12 col-lg-8">
                 <div class="row">
-                    <div class="col-6" style="text-align:center">
+                    <div class="col-12">
                         <input type="hidden" name="country" id="countryId" value="IN" />
+                    </div>
+                    <div class="col-6">
                         <label for="stateId">State<sup>*</sup></label>
                         <select name="state" class="states order-alpha" id="stateId">
                             <option value="">Select State</option>
                         </select>
                     </div>
-
-                    <div class="col-6" style="text-align:center">
+                    <div class="col-6">
                         <label for="cityId">City<sup>*</sup></label>
                         <select name="city" class="cities order-alpha" id="cityId">
                             <option value="">Select City</option>
                         </select>
                     </div>
+                    <div class="col-12">
+                        <label for="title">Title<sup>*</sup></label>
+                        <input type="text" id="title" placeholder="Title">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="message" >Request<sup>*</sup></label>
+                        <textarea id="message" placeholder="Description" style="min-height:150px;"></textarea>
+                    </div>
+
+                    <div class="col-12"  style="margin-top:30px; text-align:center">
+                        <button id="submit-btn" class="btn btn-primary"><strong>Send Request</strong></button>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-2"></div>
-        </div>
-
-        <div class="row" style="margin-top:30px;">
-            <div class="col-12 col-lg-2"></div>
-            <div class="col-12 col-lg-8" style="text-align:center">
-                <input type="text" id="title" placeholder="Title">
-            </div>
-            <div class="col-12 col-lg-2"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-lg-2"></div>
-            <div class="col-12 col-lg-8" style="text-align:center">
-                <label for="message" id="message">Request<sup>*</sup></label>
-                <textarea placeholder="Description" style="min-height:150px;"></textarea>
-            </div>
-            <div class="col-12 col-lg-2"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-lg-2"></div>
-            <div class="col-12 col-lg-8" style="margin-top:30px; text-align:center">
-                <button id="submit-btn" class="btn btn-primary"><strong>Send Request</strong></button>
             </div>
             <div class="col-12 col-lg-2"></div>
         </div>
@@ -129,15 +124,10 @@
                 })
                 let res = await resp.json()
                 if (res.status === 401) {
-                    document.getElementById("login").innerHTML = `<a class="btn btn-outline-dark"
-                        href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
-                        role="button" style="text-transform:none">
-                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
-                            src="./assets/google.webp" alt="Google sign-in">
-                        Login with Google
-                    </a>`;
+                    document.getElementById("login").style.display = "block";
                 }
                 else {
+                    document.getElementById("login").style.display = "none";
                     document.getElementById('user-name').innerHTML = res.name;
                     document.getElementById('user-pic').innerHTML = `<img src="${res.profile_pic}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
                 }
@@ -152,6 +142,7 @@
             localStorage.setItem('ABC19_SID', sessionID);
             document.getElementById('user-name').innerHTML = name;
             document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
+            document.getElementById("login").style.display = "none";
             isUpdatedfromURL = true;
         }
 
