@@ -15,12 +15,35 @@ function resize() {
 		document.getElementById('a').innerHTML = 'Active';
 		document.getElementById('r').innerHTML = 'Recovered';
 		document.getElementById('d').innerHTML = 'Deceased';
-		document.getElementById('tc').innerHTML = 'Confiremed';
+		document.getElementById('tc').innerHTML = 'Confirmed';
 		document.getElementById('ta').innerHTML = 'Active';
 		document.getElementById('tr').innerHTML = 'Recovered';
 		document.getElementById('td').innerHTML = 'Deceased';
 	}
 }
+
+function getToken(currToken) {
+	console.log(currToken)
+	var dataPromise = fetch('https://thecodeclutch.herokuapp.com/auth/getToken', {
+		method: 'GET',
+		headers: {
+			Authorization: currToken
+		}
+	});
+	dataPromise.then(data => {
+		return data.json()
+	})
+	.then( val => {
+		localStorage.setItem('TCC_SID', val.token)
+	})
+	.catch( err => {
+		// Token refresh error
+	})
+}
+
+window.setInterval(function(){
+  getToken(localStorage.getItem('ABC19_SID'))
+}, 720000);
 
 fetch('https://api.covid19india.org/data.json')
 .then(res => {
