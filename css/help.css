@@ -9,7 +9,7 @@ body {
 	background: white url('../assets/preloader-md.gif') center center no-repeat;
 }
 label {
-    transform: translate(-200px, 20px);
+    transform: translate(20%, 90%);
     padding-left : 5px;
     padding-right : 5px;
     background-color: white;
@@ -22,9 +22,6 @@ select, input, textarea {
     width: 100%;
     outline:none;
     resize:none;
-}
-#message {
-    transform: translate(-450px, 20px);
 }
 #submit-btn {
     padding:5px;
