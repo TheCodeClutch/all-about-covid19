@@ -1,0 +1,18 @@
+#preloader {
+	position: fixed;
+	height : 100vh;
+	z-index : 100;
+	text-align: center;
+	background: white url('../assets/preloader.gif') center center no-repeat;
+}
+.count {
+	padding-top : 10px; 
+	padding-bottom : 10px; 
+	font-weight: 600; 
+	font-size: 24px;
+}
+
+.title-count {
+	padding-top : 10px; 
+	padding-bottom : 10px
+}
