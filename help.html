@@ -123,7 +123,6 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("preloader").style.display = "block";
-        let isUpdatedfromURL = false;
         async function loginCheck() {
             if (localStorage.getItem('ABC19_SID') !== null) {
                 let resp = await fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
@@ -134,10 +133,11 @@
                 })
                 let res = await resp.json()
                 if (res.status === 401) {
+                    console.log('Hello')
                     document.getElementById("login").style.display = "block";
                 }
                 else {
-                    document.getElementById("login").style.display = "none";
+                    console.log('Normal')
                     document.getElementById('user-name').innerHTML = res.name;
                     document.getElementById('user-pic').innerHTML = `<img src="${res.profile_pic}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
                 }
@@ -153,16 +153,15 @@
             document.getElementById('user-name').innerHTML = name;
             document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
             document.getElementById("login").style.display = "none";
-            isUpdatedfromURL = true;
         }
 
         let url_string = window.location.href;
         let url = new URL(url_string);
         if(url.searchParams.get("name") !== null){
             updateLoginWithUrl(url);
-        }
-        if(!isUpdatedfromURL){
+        } else{
             loginCheck();
+
         }
         window.onload = function () {
             document.getElementById("preloader").style.display = "none";
