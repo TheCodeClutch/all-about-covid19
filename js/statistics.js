@@ -1,5 +1,27 @@
 document.getElementById("preloader").style.display = "block";
 
+function resize() {
+	if(window.outerWidth < 990){
+		document.getElementById('c').innerHTML = 'Conf';
+		document.getElementById('a').innerHTML = 'Act';
+		document.getElementById('r').innerHTML = 'Rec';
+		document.getElementById('d').innerHTML = 'Dead';
+		document.getElementById('tc').innerHTML = 'C';
+		document.getElementById('ta').innerHTML = 'A';
+		document.getElementById('tr').innerHTML = 'R';
+		document.getElementById('td').innerHTML = 'D';
+	} else {
+		document.getElementById('c').innerHTML = 'Confirmed';
+		document.getElementById('a').innerHTML = 'Active';
+		document.getElementById('r').innerHTML = 'Recovered';
+		document.getElementById('d').innerHTML = 'Deceased';
+		document.getElementById('tc').innerHTML = 'Confiremed';
+		document.getElementById('ta').innerHTML = 'Active';
+		document.getElementById('tr').innerHTML = 'Recovered';
+		document.getElementById('td').innerHTML = 'Deceased';
+	}
+}
+
 fetch('https://api.covid19india.org/data.json')
 .then(res => {
 	console.log(res)
@@ -17,6 +39,9 @@ fetch('https://api.covid19india.org/data.json')
 	let content = "";
 	for(let i = 1; i < statesArray.length; i = i + 1){
 		let noOfActive = statesArray[i].active;
+		let noOfRecovered = statesArray[i].recovered;
+		let noOfConfirmed = statesArray[i].confirmed;
+		let noOfDeaths = statesArray[i].deaths;
 		let deltaconfirmed = "";
 		let deltadeaths = "";
 		let deltarecovered = "";
@@ -44,10 +69,10 @@ fetch('https://api.covid19india.org/data.json')
 		}
 		content = content + `<tr>
 																<th style='${color}'>${statesArray[i].state}</th>
-																<td>${statesArray[i].confirmed}<sup style='${deltacolorConfirmed}'>${deltaconfirmed}</sup></td>
-																<td>${statesArray[i].active}</td>
-																<td>${statesArray[i].recovered}<sup style='${deltacolorRecovered}'>${deltarecovered}</sup></td>
-																<td>${statesArray[i].deaths}<sup style='${deltacolorDeaths}'>${deltadeaths}</sup></td>
+																<td>${noOfConfirmed}<sup style='${deltacolorConfirmed}'>${deltaconfirmed}</sup></td>
+																<td>${noOfActive}</td>
+																<td>${noOfRecovered}<sup style='${deltacolorRecovered}'>${deltarecovered}</sup></td>
+																<td>${noOfDeaths}<sup style='${deltacolorDeaths}'>${deltadeaths}</sup></td>
 															</tr>`
 	}
 	document.getElementById('table-data').innerHTML = content;
@@ -55,27 +80,11 @@ fetch('https://api.covid19india.org/data.json')
 
 })
 
+resize();
+
 window.onload = () => {
 		document.getElementById("preloader").style.display = "none";
 		window.addEventListener('resize', () => {
-			if(window.outerWidth < 990){
-				document.getElementById('c').innerHTML = 'Conf';
-				document.getElementById('a').innerHTML = 'Act';
-				document.getElementById('r').innerHTML = 'Rec';
-				document.getElementById('d').innerHTML = 'Dead';
-				document.getElementById('tc').innerHTML = 'C';
-				document.getElementById('ta').innerHTML = 'A';
-				document.getElementById('tr').innerHTML = 'R';
-				document.getElementById('td').innerHTML = 'D';
-			} else {
-				document.getElementById('c').innerHTML = 'Confirmed';
-				document.getElementById('a').innerHTML = 'Active';
-				document.getElementById('r').innerHTML = 'Recovered';
-				document.getElementById('d').innerHTML = 'Deceased';
-				document.getElementById('tc').innerHTML = 'Confiremed';
-				document.getElementById('ta').innerHTML = 'Active';
-				document.getElementById('tr').innerHTML = 'Recovered';
-				document.getElementById('td').innerHTML = 'Deceased';
-			}
+			resize();
 		})
 }
