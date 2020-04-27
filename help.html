@@ -37,7 +37,7 @@
                         <div class="col-12">
                             <a class="btn btn-outline-dark"
                                 href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
-                                role="button" style="text-transform:none">
+                                role="button" style="text-transform:none;">
                                 <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
                                     src="./assets/google.webp" alt="Google sign-in">
                                 Login with Google
@@ -47,7 +47,7 @@
                     <div class="row" id="user-details" style="display:none">
                         <div id="user-name"></div>
                         <div id="user-email"></div>
-                        <img src="" id="user-pic" style="height : 200px; width : 200px; border-radius : 50%">
+                        <img src="" id="user-pic" style="height : 50px; width : 50px; border-radius : 50%">
                     </div>
                 </li>
             </ul>
@@ -62,15 +62,23 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 col-lg-6">
-                Post Request
-            </div>
-            <div class="col-12 col-lg-6">
-                <button id="all-request" class="btn btn-primary"><strong>See All Requests</strong></button>
-            </div>
-        </div>
         <div class="row" style="margin-top:50px;">
+            <div class="col-12 col-lg-2"></div>
+            <div class="col-12 col-lg-8">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>Post Request</h3>
+                    </div>
+
+                    <div class="col-6" style="text-align:center">
+                        <button id="all-requests" class="btn btn-primary"><strong>See All Requests</strong></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-2"></div>
+        </div>
+        
+        <div class="row" style="margin-top:30px;">
             <div class="col-12 col-lg-2"></div>
             <div class="col-12 col-lg-8">
                 <div class="row">
@@ -113,7 +121,7 @@
         <div class="row">
             <div class="col-12 col-lg-2"></div>
             <div class="col-12 col-lg-8" style="margin-top:30px; text-align:center">
-                <button id="submit-btn" class="btn btn-primary"><strong>Send Request</strong></button>
+                <button id="submit-btn" class="btn btn-primary"><strong>Post Request</strong></button>
             </div>
             <div class="col-12 col-lg-2"></div>
         </div>
@@ -133,11 +141,11 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("preloader").style.display = "block";
-        if () {
+        if (localStorage.getItem("ABC19_SID") !== null && localStorage.getItem("ABC19_SID") !== undefined) {
             fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
                 method: 'GET',
                 headers: {
-                    Authorization: token
+                    Authorization: localStorage.getItem("ABC19_SID")
                 }
             })
                 .then(data => {
