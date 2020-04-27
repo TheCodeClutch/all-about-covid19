@@ -16,6 +16,9 @@ label {
     font-size : 14px
 }
 select, input, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     border-radius: 5px;
     border:2px solid lightgray;
     padding:10px;
