@@ -132,38 +132,32 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("preloader").style.display = "block";
-        if (localStorage.getItem('ABC19_SID') !== null) {
-            fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
-                method: 'GET',
-                headers: {
-                    Authorization: localStorage.getItem('ABC19_SID')
-                }
-            })
-                .then(data => {
-                    return data.json()
-                })
-                .then(res => {
-                    if (res.status === 401) {
-                        //token is either expired or invalid
-                        document.getElementById("login").style.display = "block";
-                        document.getElementById("user-details").style.display = "none";
-                    }
-                    else {
-                        document.getElementById("login").style.display = "none";
-                        document.getElementById('user-name').innerHTML = res.name;
-                        document.getElementById('user-email').innerHTML = res.email;
-                        document.getElementById('user-pic').setAttribute('src', res.profile_pic);
-                    }
-                })
-        }
-        else{
-            document.getElementById("login").style.display = "block";
-        }
 
-        window.onload = function () {
-            document.getElementById("preloader").style.display = "none";
-            let url_string = window.location.href;
-            let url = new URL(url_string);
+        async function loginCheck() {
+            if (localStorage.getItem('ABC19_SID') !== null) {
+                let resp = await fetch("https://allaboutcovid-19.herokuapp.com/auth/isloggedin", {
+                    method: 'GET',
+                    headers: {
+                        Authorization: localStorage.getItem('ABC19_SID')
+                    }
+                })
+                let res = await resp.json()
+                if (res.status === 401) {
+                    //token is either expired or invalid
+                    document.getElementById("login").style.display = "block";
+                    document.getElementById("user-details").style.display = "none";
+                }
+                else {
+                    document.getElementById("login").style.display = "none";
+                    document.getElementById('user-name').innerHTML = res.name;
+                    document.getElementById('user-email').innerHTML = res.email;
+                    document.getElementById('user-pic').setAttribute('src', res.profile_pic);
+                    document.getElementById("user-details").style.display = "block";
+                }
+                  
+            }
+        }
+        function updateLoginWithUrl(url){
             let name = url.searchParams.get("name");
             let email = url.searchParams.get("email");
             let sessionID = url.searchParams.get("sessionID");
@@ -172,10 +166,18 @@
             document.getElementById('user-name').innerHTML = name;
             document.getElementById('user-email').innerHTML = email;
             document.getElementById('user-pic').setAttribute('src', image);
-            if(localStorage.getItem('ABC19_SID') !== null){
-                document.getElementById("login").style.display = "none";
-                document.getElementById("user-details").style.display = "block";
-            }
+            document.getElementById("login").style.display = "none";
+            document.getElementById("user-details").style.display = "block";
+        }
+
+        let url_string = window.location.href;
+        let url = new URL(url_string);
+        if(url.searchParams.get("name") !== null){
+            updateLoginWithUrl(url);
+        }
+        loginCheck();
+        window.onload = function () {
+            document.getElementById("preloader").style.display = "none";
         }
 
     </script>
