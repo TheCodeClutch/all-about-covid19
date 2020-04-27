@@ -1,0 +1,7 @@
+#preloader {
+	position: fixed;
+	height : 100vh;
+	z-index : 100;
+	text-align: center;
+	background: white url('../assets/preloader.gif') center center no-repeat;
+}
