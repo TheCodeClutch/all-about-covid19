@@ -162,18 +162,17 @@
 
         window.onload = function () {
             document.getElementById("preloader").style.display = "none";
+            let url_string = window.location.href;
+            // let url = new URL(url_string);
+            // let name = url.searchParams.get("name");
+            // let email = url.searchParams.get("email");
+            // let sessionID = url.searchParams.get("sessionID");
+            // let image = url.searchParams.get("image");
+            // localStorage.setItem('ABC19_SID', sessionID);
+            // document.getElementById('user-name').innerHTML = name;
+            // document.getElementById('user-email').innerHTML = email;
+            // document.getElementById('user-pic').setAttribute('src', image);
         }
-
-		let url_string = window.location.href;
-		let url = new URL(url_string);
-		let name = url.searchParams.get("name");
-		let email = url.searchParams.get("email");
-		let sessionID = url.searchParams.get("sessionID");
-		let image = url.searchParams.get("image");
-		localStorage.setItem('ABC19_SID', sessionID);
-		document.getElementById('user-name').innerHTML = name;
-		document.getElementById('user-email').innerHTML = email;
-		document.getElementById('user-pic').setAttribute('src', image);
 
     </script>
 
