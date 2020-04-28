@@ -68,6 +68,9 @@
                     <div class="col-6" style="text-align: right;">
                         <button id="all-requests" class="btn btn-primary"><strong>See All Requests</strong></button>
                     </div>
+                    <div class="col-12">
+                    <span style="font-size : 14px">*Login before posting request</span>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-lg-2"></div>
@@ -99,10 +102,10 @@
 
                     <div class="col-12">
                         <label for="message">Request<sup>*</sup></label>
-                        <textarea onfocus="fieldReset(event)" id="message" placeholder="Description" style="min-height:150px;"></textarea>
+                        <textarea onfocus="fieldReset(event)" id="message" placeholder="Description (Min 100 char required)" style="min-height:150px;"></textarea>
                     </div>
 
-                    <div class="col-12" style="margin-top:30px; text-align:center">
+                    <div class="col-12" style="margin-top:30px; text-align:center; min-width : 100%">
                         <button id="submit-btn" class="btn btn-primary"><strong>Send Request</strong></button>
                     </div>
                 </div>
@@ -174,6 +177,7 @@
 
         function fieldReset(e){
             e.target.style.borderColor = 'lightgray'
+            document.getElementById('submit-btn').innerHTML = "Send Request";
         }
 
         function getFormattedTime(){
@@ -220,6 +224,7 @@
             document.getElementById('submit-btn').addEventListener('click', () => {
             if (localStorage.getItem('ABC19_login') === 'true') {
                 if(validate()){
+                    document.getElementById('submit-btn').innerHTML = "Sending...";
                     let data = {
                         time_ms: Date.now(),
                         time_formatted: getFormattedTime(),
@@ -238,6 +243,7 @@
                     })
                     .then(res => res.json())
                     .then(data => {
+                        console.log()
                         if(data.msg !== undefined){
                             document.getElementById('submit-btn').innerHTML = data.msg;
                             document.getElementById('submit-btn').style.backgroundColor = '#28a745'
