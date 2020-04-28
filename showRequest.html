@@ -265,7 +265,7 @@
 						if (resp.msg !== undefined) {
 							let data = resp.msg;
 							let content = "";
-							for (let i = 0; i < data.length; i = i + 1) {
+							for (let i = data.length - 1; i >= 0; i = i - 1) {
 								content = content + `<div data-aos="zoom-out"  style="margin-top : 20px; margin-bottom : 20px">
 													<div class="card" style="width: 100%">
 														<div class="card-body">
@@ -385,6 +385,7 @@
 						},
 						body: JSON.stringify(data)
 					})
+					.then(res => {return res.json()})
 						.then(message => {
 							if (message.msg !== 'undefined') {
 								Swal.fire({
