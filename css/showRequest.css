@@ -41,6 +41,14 @@ select, option {
     background-color: white;
 }
 
+#posts {
+	margin-bottom : 100px
+}
+
+#post-heading {
+	margin-bottom : 50px
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -50,12 +58,12 @@ input:-webkit-autofill:active  {
 
 @media only screen and (max-width: 900px) {
 	.time {
-		display: block;
+		display: none;
 	}
 }
 @media only screen and (min-width: 900px) {
 	.time {
-		display: none;
+		display: block;
 	}
 
 }
