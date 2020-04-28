@@ -160,9 +160,13 @@
             let sessionID = await url.searchParams.get("sessionID");
             let image = await url.searchParams.get("image");
             localStorage.setItem('ABC19_SID', sessionID);
-            localStorage.setItem('ABC19_login', true);
-            document.getElementById('user-name').innerHTML = name;
-            document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
+            loginCheck();
+            if(localStorage.getItem('ABC19_login') === 'true'){
+                document.getElementById('user-name').innerHTML = name;
+                document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
+            } else {
+                document.getElementById("login").style.display = "block";
+            }
         }
 
         function updateStorageVar(){
