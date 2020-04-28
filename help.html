@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
         <img src="assets/covid-logo.PNG" alt="covid-logo" style="width: 42px; height:40px;">
-		<a class="navbar-brand" href="index.html" style="padding-left:5px;">COVID-19</a>
+        <a class="navbar-brand" href="index.html" style="padding-left:5px;">COVID-19</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
                             alt="Google sign-in">
                         Login with Google
                     </a>
-                    <span id="user-pic"></span><span id="user-name" style="padding-top:5px;"></span>
+                    <span id="user-pic"></span><span id="user-name" style="padding:8px;"></span>
                 </li>
             </ul>
 
@@ -54,6 +54,10 @@
 
     <div class="container-fluid">
         <div class="row" style="text-align:center">
+            <!-- HashTags and Quotes -->
+            <div class="col-12" style="background-color: #FFFAFA; height:30px;">
+                <h6 style="font-size:14px; padding:5px 0px;" id="hashtag"></h6>
+            </div>
             <div class="col-12" style="margin-top: 50px;">
                 <h2>Help Station</h2>
             </div>
@@ -69,7 +73,8 @@
                     </div>
 
                     <div class="col-6" style="text-align: right;">
-                        <a href="./showRequest.html"><button id="all-requests" style="min-width : 60%" class="btn btn-primary"><strong>See All Requests</strong></button></a>
+                        <a href="./showRequest.html"><button id="all-requests" style="min-width : 60%"
+                                class="btn btn-primary"><strong>See All Requests</strong></button></a>
                     </div>
                     <div class="col-12">
                         <span style="font-size : 14px">*Login before posting request</span>
@@ -106,10 +111,12 @@
                     <div class="col-12">
                         <label for="message">Request<sup>*</sup></label>
                         <textarea onfocus="fieldReset(event)" id="message"
-                            placeholder="Description (Minimum 100 characters required)" style="min-height:150px;"></textarea>
+                            placeholder="Description (Minimum 100 characters required)"
+                            style="min-height:150px;"></textarea>
                     </div>
 
-                    <div class="col-12" style="margin-top:20px; text-align:center; min-width : 100%; margin-bottom: 10px;">
+                    <div class="col-12"
+                        style="margin-top:20px; text-align:center; min-width : 100%; margin-bottom: 10px;">
                         <button id="submit-btn" class="btn btn-primary"><strong>Send Request</strong></button>
                     </div>
                 </div>
@@ -119,12 +126,12 @@
     </div>
 
     <!-- Footer -->
-	<footer>
-		<div style="padding:10px 0px;">
-			&copy; 2020 Copyright:
-			<a href="about.html">WhoWeAre</a>
-		</div>
-	</footer>
+    <footer>
+        <div style="padding:10px 0px;">
+            &copy; 2020 Copyright:
+            <a href="about.html">WhoWeAre</a>
+        </div>
+    </footer>
 
     <script src="./js/auth-token.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -230,6 +237,16 @@
         }
         window.onload = function () {
             document.getElementById("preloader").style.display = "none";
+            var quotes = ["#StaySafe", "#StayAtHome", "#SocialDistancing", "#IndiaFightsCorona", "#SafeHands", "#TogetherAtHome", "#QuarantineAndChill",
+                "#FlattenTheCurve", "#Lockdown", "#WorkingFromHome", "#ViewFromMyWindow", "#MyPandemicSurvivalPlan", "#IndiaFightsBack", "#WithMe",
+                "#EverydayIsASunday", "#CoronaWarriors"];
+
+            for (let i = 0; i < quotes.length; i++) {
+                console.log(quotes[i]);
+                setTimeout(function () {
+                    document.getElementById("hashtag").innerHTML = quotes[i];
+                }, i * 2000);
+            }
             updateStorageVar();
             document.getElementById('submit-btn').addEventListener('click', () => {
                 if (localStorage.getItem('ABC19_login') === 'true') {
@@ -283,24 +300,24 @@
                         },
                         body: JSON.stringify(data)
                     })
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.msg !== undefined){
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Yayayay',
-                                text: data.msg
-                            })
-                            document.getElementById('submit-btn').innerHTML = "Send Request";
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: data.err
-                            })
-                            document.getElementById('submit-btn').innerHTML = "Send Request";
-                        }
-                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.msg !== undefined) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Yayayay',
+                                    text: data.msg
+                                })
+                                document.getElementById('submit-btn').innerHTML = "Send Request";
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: data.err
+                                })
+                                document.getElementById('submit-btn').innerHTML = "Send Request";
+                            }
+                        })
 
                     document.getElementsByClassName('swal2-confirm swal2-styled')[0].innerHTML = `<img width="20px" style="margin-bottom: 2px; margin-right: 2px;" src="./assets/google.webp"
                             alt="Google sign-in">

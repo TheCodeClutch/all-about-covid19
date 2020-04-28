@@ -86,6 +86,10 @@
 
     <div class="container-fluid">
         <div class="row">
+            <!-- HashTags and Quotes -->
+            <div class="col-12" style="background-color: #FFFAFA; height:30px; text-align:center;">
+                <h6 style="font-size:14px; padding:5px 0px;" id="hashtag"></h6>
+            </div>
             <div class="col-12 col-lg-3"></div>
             <div class="col-12 col-lg-6" style="margin-top:50px;">
                 <div style="text-align:center;">
@@ -139,6 +143,16 @@
 
         window.onload = () => {
             document.getElementById("preloader").style.display = "none";
+            var quotes = ["#StaySafe", "#StayAtHome", "#SocialDistancing", "#IndiaFightsCorona", "#SafeHands", "#TogetherAtHome", "#QuarantineAndChill",
+                "#FlattenTheCurve", "#Lockdown", "#WorkingFromHome", "#ViewFromMyWindow", "#MyPandemicSurvivalPlan", "#IndiaFightsBack", "#WithMe",
+                "#EverydayIsASunday", "#CoronaWarriors"];
+
+            for (let i = 0; i < quotes.length; i++) {
+                console.log(quotes[i]);
+                setTimeout(function () {
+                    document.getElementById("hashtag").innerHTML = quotes[i];
+                }, i * 2000);
+            }
         }
     </script>
 </body>
