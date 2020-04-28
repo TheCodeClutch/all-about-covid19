@@ -184,23 +184,27 @@
         }
 
         function validate(){
+            let isValid = true;
             if(document.getElementById('stateId').value.length === 0){
                 document.getElementById('stateId').style.borderColor = '#FF073A'
-                return false;
+                isValid = false;
             }
             if(document.getElementById('cityId').value.length === 0){
                 document.getElementById('cityId').style.borderColor = '#FF073A'
-                return false;
+                isValid = false;
             }
             if(document.getElementById('title').value.length === 0){
                 document.getElementById('title').style.borderColor = '#FF073A'
-                return false;
+                isValid = false;
             }
             if(document.getElementById('message').value.length <= 100){
                 document.getElementById('message').style.borderColor = '#FF073A'
-                return false;
+                isValid = false;
             } 
-            return true;
+            if(isValid){
+                return true;
+            }
+            return false;
         }
 
         let url_string = window.location.href;
@@ -245,8 +249,11 @@
                         }
                         
                     })
+                } else {
+                    console.log('Non validated')
                 }
             } else {
+                console.log('Popup')
                 Swal.fire({
                     title: 'Login',
                     text: "You need to be logged in before posting",
