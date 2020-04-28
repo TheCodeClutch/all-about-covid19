@@ -218,7 +218,7 @@
             document.getElementById("preloader").style.display = "none";
             updateStorageVar();
             document.getElementById('submit-btn').addEventListener('click', () => {
-            if (localStorage.getItem('ABC19_login') === true) {
+            if (localStorage.getItem('ABC19_login') === 'true') {
                 if(validate()){
                     let data = {
                         time_ms: Date.now(),
@@ -247,12 +247,9 @@
                         }
                         
                     })
-                } else {
-                    console.log('Non validated')
                 }
             } 
             else {
-                console.log('Popup')
                 Swal.fire({
                     title: 'Login',
                     text: "You need to be logged in before posting",
