@@ -102,7 +102,7 @@
 						<option value="">Select City</option>
 					</select>
 				</div>
-				<div class="col-12" style="margin-top:30px; text-align:center; min-width : 100%">
+				<div class="col-12" style="margin-top:50px; text-align:center; min-width : 100%">
 					<button id="submit-btn" class="btn btn-primary"><strong>View all requests</strong></button>
 				</div>
 			</div>
@@ -386,7 +386,7 @@
 						body: JSON.stringify(data)
 					})
 						.then(message => {
-							if (message.msg !== undefined) {
+							if (message.msg !== 'undefined') {
 								Swal.fire({
 									icon: 'success',
 									title: 'Yayayay',
