@@ -248,12 +248,14 @@
                                 title: 'Yayayay',
                                 text: data.msg
                             })
+                            document.getElementById('submit-btn').innerHTML = "Send Request";
                         } else {
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
                                 text: data.err
                             })
+                            document.getElementById('submit-btn').innerHTML = "Send Request";
                         }
                         
                     })
