@@ -3,7 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="keywords" content="coronavirus, pandemic, COVID'19, statistics, COVID news">
+    <meta name="description" content="COVID guide and helper">
+	<meta name="author" content="Nikhil Singh">
+	<meta name="google-site-verification" content="6rYSlJLD1rddeYJFqwfzLU1IfY3eOsx5KHUBSLfNZUs" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="./css/showRequest.css">
@@ -11,6 +15,7 @@
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<!--Google fonts  -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<title>COVID'19|VIEW REQUESTS</title>
 </head>
 
 <body></body>
@@ -130,7 +135,13 @@
 	</div>
 </div>
 
-
+<!-- Footer -->
+<footer>
+	<div style="padding:10px 0px;">
+		&copy;
+		<a href="about.html">KnowAboutUs</a>
+	</div>
+</footer>
 
 
 <script src="./js/auth-token.js"></script>
@@ -238,7 +249,6 @@
 		"#EverydayIsASunday", "#CoronaWarriors", "#MyGovFactCheck"];
 
 		for (let i = 0; i < quotes.length; i++) {
-			console.log(quotes[i]);
 			setTimeout(function () {
 				document.getElementById("hashtag").innerHTML = quotes[i];
 			}, i * 2000);
@@ -353,7 +363,6 @@
 						description: document.getElementById(String(idVal)).value,
 						post_id: event.target.getAttribute('data-abc19-post-id')
 					}
-					console.log(data)
 					fetch('https://allaboutcovid-19.herokuapp.com/posts/savecomment', {
 						method: 'POST',
 						headers: {

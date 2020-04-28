@@ -1,5 +1,4 @@
 function getToken(currToken) {
-	console.log(currToken)
 	var dataPromise = fetch('https://thecodeclutch.herokuapp.com/auth/getToken', {
 		method: 'GET',
 		headers: {
