@@ -1,5 +1,5 @@
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Lora', serif;
 }
 #preloader {
 	position: fixed;
@@ -39,6 +39,15 @@ select, input, textarea {
 
 select, option {
     background-color: white;
+}
+
+footer {
+	width: 100%;
+	background-color:#ECECEC;
+	text-align: center;
+    height:50px;
+    position:absolute;
+    bottom:0;
 }
 
 input:-webkit-autofill,

@@ -1,5 +1,5 @@
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Lora', serif;
 }
 #preloader {
 	position: fixed;
@@ -7,4 +7,12 @@ body {
 	z-index : 100;
 	text-align: center;
 	background: white url('../assets/preloader-md.gif') center center no-repeat;
+}
+footer {
+	width: 100%;
+	background-color:#ECECEC;
+	text-align: center;
+	height:50px;
+	position:absolute;
+	bottom:0;
 }

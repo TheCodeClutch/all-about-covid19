@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  
+    <!--Google fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/help.css">
     <title>COVID'19|HELP</title>
 </head>
@@ -20,7 +20,8 @@
     </div>
 
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-        <a class="navbar-brand" href="#">COVID-19</a>
+        <img src="assets/covid-logo.PNG" alt="covid-logo" style="width: 42px; height:40px;">
+		<a class="navbar-brand" href="index.html" style="padding-left:5px;">COVID-19</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -57,7 +58,7 @@
         </div>
 
 
-        <div class="row" style="margin-top:30px;">
+        <div class="row" style="margin-top:20px;">
             <div class="col-12 col-lg-2"></div>
             <div class="col-12 col-lg-8">
                 <div class="row">
@@ -69,14 +70,14 @@
                         <button id="all-requests" class="btn btn-primary"><strong>See All Requests</strong></button>
                     </div>
                     <div class="col-12">
-                    <span style="font-size : 14px">*Login before posting request</span>
+                        <span style="font-size : 14px">*Login before posting request</span>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-2"></div>
         </div>
 
-        <div class="row" style="margin-top:30px;">
+        <div class="row" style="margin-top:20px;">
             <div class="col-12 col-lg-2"></div>
             <div class="col-12 col-lg-8">
                 <div class="row">
@@ -102,10 +103,11 @@
 
                     <div class="col-12">
                         <label for="message">Request<sup>*</sup></label>
-                        <textarea onfocus="fieldReset(event)" id="message" placeholder="Description (Min 100 char required)" style="min-height:150px;"></textarea>
+                        <textarea onfocus="fieldReset(event)" id="message"
+                            placeholder="Description (Minimum 100 characters required)" style="min-height:150px;"></textarea>
                     </div>
 
-                    <div class="col-12" style="margin-top:30px; text-align:center; min-width : 100%">
+                    <div class="col-12" style="margin-top:20px; text-align:center; min-width : 100%; margin-bottom: 10px;">
                         <button id="submit-btn" class="btn btn-primary"><strong>Send Request</strong></button>
                     </div>
                 </div>
@@ -113,6 +115,14 @@
             <div class="col-12 col-lg-2"></div>
         </div>
     </div>
+
+    <!-- Footer -->
+	<footer>
+		<div style="padding:10px 0px;">
+			&copy; 2020 Copyright:
+			<a href="about.html">WhoWeAre</a>
+		</div>
+	</footer>
 
     <script src="./js/auth-token.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -126,7 +136,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> -->
 
     <script>
         document.getElementById("preloader").style.display = "block";
@@ -165,45 +175,45 @@
             document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
         }
 
-        function updateStorageVar(){
-            if(localStorage.getItem('ABC19_SID') !== null){
+        function updateStorageVar() {
+            if (localStorage.getItem('ABC19_SID') !== null) {
                 localStorage.setItem('ABC19_login', true);
             } else {
                 localStorage.setItem('ABC19_login', false);
             }
         }
 
-        function fieldReset(e){
+        function fieldReset(e) {
             e.target.style.borderColor = 'lightgray'
             document.getElementById('submit-btn').innerHTML = "Send Request";
         }
 
-        function getFormattedTime(){
+        function getFormattedTime() {
             let date = new Date();
             let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            var dateString = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + ("00" + date.getMinutes()).slice(-2) 
+            var dateString = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + ("00" + date.getMinutes()).slice(-2)
             return dateString;
         }
 
-        function validate(){
+        function validate() {
             let isValid = true;
-            if(document.getElementById('stateId').value.length === 0){
+            if (document.getElementById('stateId').value.length === 0) {
                 document.getElementById('stateId').style.borderColor = '#FF073A'
                 isValid = false;
             }
-            if(document.getElementById('cityId').value.length === 0){
+            if (document.getElementById('cityId').value.length === 0) {
                 document.getElementById('cityId').style.borderColor = '#FF073A'
                 isValid = false;
             }
-            if(document.getElementById('title').value.length === 0){
+            if (document.getElementById('title').value.length === 0) {
                 document.getElementById('title').style.borderColor = '#FF073A'
                 isValid = false;
             }
-            if(document.getElementById('message').value.length <= 100){
+            if (document.getElementById('message').value.length <= 100) {
                 document.getElementById('message').style.borderColor = '#FF073A'
                 isValid = false;
-            } 
-            if(isValid){
+            }
+            if (isValid) {
                 return true;
             }
             return false;
@@ -220,74 +230,74 @@
             document.getElementById("preloader").style.display = "none";
             updateStorageVar();
             document.getElementById('submit-btn').addEventListener('click', () => {
-            if (localStorage.getItem('ABC19_login') === 'true') {
-                if(validate()){
-                    document.getElementById('submit-btn').innerHTML = "Sending...";
-                    let data = {
-                        time_ms: Date.now(),
-                        time_formatted: getFormattedTime(),
-                        state: document.getElementById('stateId').value,
-                        city: document.getElementById('cityId').value,
-                        title: document.getElementById('title').value,
-                        description: document.getElementById('message').value,
-                    }
-                    fetch('https://allaboutcovid-19.herokuapp.com/posts/saveposts', {
-                        method : 'POST',
-                        headers : {
-                            'content-type': 'application/json',
-                            'Authorization': localStorage.getItem('ABC19_SID')
-                        },
-                        body: JSON.stringify(data)
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log()
-                        if(data.msg !== undefined){
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Yayayay',
-                                text: data.msg
-                            })
-                            document.getElementById('submit-btn').innerHTML = "Send Request";
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: data.err
-                            })
-                            document.getElementById('submit-btn').innerHTML = "Send Request";
+                if (localStorage.getItem('ABC19_login') === 'true') {
+                    if (validate()) {
+                        document.getElementById('submit-btn').innerHTML = "Sending...";
+                        let data = {
+                            time_ms: Date.now(),
+                            time_formatted: getFormattedTime(),
+                            state: document.getElementById('stateId').value,
+                            city: document.getElementById('cityId').value,
+                            title: document.getElementById('title').value,
+                            description: document.getElementById('message').value,
                         }
-                        
-                    })
-                }
-            } 
-            else {
-                Swal.fire({
-                    title: 'Login',
-                    text: "You need to be logged in before posting",
-                    icon: 'info',
-                    showClass: {
-                        popup: 'animated fadeInDown faster'
-                    },
-                    hideClass: {
-                        popup: 'animated fadeOutUp faster'
-                    },
-                    showCancelButton: false,
-                    confirmButtonColor: '#FFFFFF',
-                    cancelButtonColor: '#FF073A',
-                    confirmButtonText: 'Login with Google'
-                }).then((result) => {
-                    if (result.value) {
-                        window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile';
-                    }
-                })
+                        fetch('https://allaboutcovid-19.herokuapp.com/posts/saveposts', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                                'Authorization': localStorage.getItem('ABC19_SID')
+                            },
+                            body: JSON.stringify(data)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log()
+                                if (data.msg !== undefined) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Yayayay',
+                                        text: data.msg
+                                    })
+                                    document.getElementById('submit-btn').innerHTML = "Send Request";
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: data.err
+                                    })
+                                    document.getElementById('submit-btn').innerHTML = "Send Request";
+                                }
 
-                document.getElementsByClassName('swal2-confirm swal2-styled')[0].innerHTML = `<img width="20px" style="margin-bottom: 2px; margin-right: 2px;" src="./assets/google.webp"
+                            })
+                    }
+                }
+                else {
+                    Swal.fire({
+                        title: 'Login',
+                        text: "You need to be logged in before posting",
+                        icon: 'info',
+                        showClass: {
+                            popup: 'animated fadeInDown faster'
+                        },
+                        hideClass: {
+                            popup: 'animated fadeOutUp faster'
+                        },
+                        showCancelButton: false,
+                        confirmButtonColor: '#FFFFFF',
+                        cancelButtonColor: '#FF073A',
+                        confirmButtonText: 'Login with Google'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile';
+                        }
+                    })
+
+                    document.getElementsByClassName('swal2-confirm swal2-styled')[0].innerHTML = `<img width="20px" style="margin-bottom: 2px; margin-right: 2px;" src="./assets/google.webp"
                             alt="Google sign-in">
                         Login with Google`
-                document.getElementsByClassName('swal2-confirm swal2-styled')[0].style.color = '#000000'
-            }
-        })
+                    document.getElementsByClassName('swal2-confirm swal2-styled')[0].style.color = '#000000'
+                }
+            })
         }
 
 
