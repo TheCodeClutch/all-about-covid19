@@ -381,6 +381,7 @@
 						method: 'POST',
 						headers: {
 							'content-type': 'application/json',
+							'Authorization': localStorage.getItem('ABC19_SID')
 						},
 						body: JSON.stringify(data)
 					})
