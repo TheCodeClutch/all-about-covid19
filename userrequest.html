@@ -63,8 +63,8 @@
             </div>
         </div>
 
-        <div class="row" style="margin-top : 100px; text-align : center; display: none;">
-            <div class="col-12" id="login-status">
+        <div class="row" style="text-align : center;">
+            <div class="col-12" id="login-status" style="margin-top : 100px; display: none;">
 
             </div>
         </div>
@@ -217,6 +217,8 @@
             }
             updateStorageVar();
                 if (localStorage.getItem('ABC19_login') === 'true') { 
+                    document.getElementById('login-status').innerHTML = 'Loading your posts...'
+                    document.getElementById('login-status').style.display = "block";
                         fetch('https://allaboutcovid-19.herokuapp.com/posts/getselfposts', {
                             method: 'GET',
                             headers: {
@@ -228,7 +230,12 @@
                             .then(resp => {
                                 if (resp.msg !== undefined) {
 							let data = resp.msg;
-							let content = "";
+                            let content = "";
+                            if(data.msg.length === 0){
+                                document.getElementById('login-status').innerHTML = 'No posts to show, post one <a href="https://allaboutcovid19.netlify.app/help.html">here</a>'
+                                document.getElementById('login-status').style.display = "block";
+                            }
+                            document.getElementById('login-status').style.display = "none";
 							for (let i = data.length - 1; i >= 0; i = i - 1) {
 								content = content + `<div data-aos="zoom-out"  style="margin-top : 20px; margin-bottom : 20px">
 													<div class="card" style="width: 100%">
@@ -287,6 +294,10 @@
 							document.getElementById('posts-container').innerHTML = content;
 						} 
 
+                            })
+                            .catch(error => {
+                                document.getElementById('login-status').innerHTML = error.err
+                                document.getElementById('login-status').style.display = "block";
                             })
                     
                 }
