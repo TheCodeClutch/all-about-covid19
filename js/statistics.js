@@ -89,7 +89,7 @@ window.onload = () => {
 	})
 	var quotes = ["#StaySafe", "#StayAtHome", "#SocialDistancing", "#IndiaFightsCorona", "#SafeHands", "#TogetherAtHome", "#QuarantineAndChill",
 		"#FlattenTheCurve", "#Lockdown", "#WorkingFromHome", "#ViewFromMyWindow", "#MyPandemicSurvivalPlan", "#IndiaFightsBack", "#WithMe",
-		"#EverydayIsASunday", "#CoronaWarriors"];
+		"#EverydayIsASunday", "#CoronaWarriors", "#MyGovFactCheck"];
 
 	for (let i = 0; i < quotes.length; i++) {
 		console.log(quotes[i]);
