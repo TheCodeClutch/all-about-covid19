@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  
     <link rel="stylesheet" href="./css/help.css">
     <title>COVID'19|HELP</title>
 </head>
@@ -37,8 +38,8 @@
                     <a style="display: none;" id="login" class="btn btn-outline-dark"
                         href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
                         role="button" style="text-transform:none">
-                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;"
-                            src="./assets/google.webp" alt="Google sign-in">
+                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;" src="./assets/google.webp"
+                            alt="Google sign-in">
                         Login with Google
                     </a>
                     <span id="user-pic"></span><span id="user-name"></span>
@@ -61,7 +62,7 @@
             <div class="col-12 col-lg-8">
                 <div class="row">
                     <div class="col-6">
-                       <h3>Post Request</h3>
+                        <h3>Post Request</h3>
                     </div>
 
                     <div class="col-6" style="text-align: right;">
@@ -71,7 +72,7 @@
             </div>
             <div class="col-12 col-lg-2"></div>
         </div>
-        
+
         <div class="row" style="margin-top:30px;">
             <div class="col-12 col-lg-2"></div>
             <div class="col-12 col-lg-8">
@@ -97,11 +98,11 @@
                     </div>
 
                     <div class="col-12">
-                        <label for="message" >Request<sup>*</sup></label>
+                        <label for="message">Request<sup>*</sup></label>
                         <textarea id="message" placeholder="Description" style="min-height:150px;"></textarea>
                     </div>
 
-                    <div class="col-12"  style="margin-top:30px; text-align:center">
+                    <div class="col-12" style="margin-top:30px; text-align:center">
                         <button id="submit-btn" class="btn btn-primary"><strong>Send Request</strong></button>
                     </div>
                 </div>
@@ -112,6 +113,7 @@
 
     <script src="./js/auth-token.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script src="//geodata.solutions/includes/statecity.js"></script>
 
@@ -121,6 +123,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> -->
+
     <script>
         document.getElementById("preloader").style.display = "block";
         async function loginCheck() {
@@ -135,38 +139,90 @@
                 if (res.status === 401) {
                     console.log('Hello')
                     document.getElementById("login").style.display = "block";
+                    localStorage.setItem('ABC19_login', false);
                 }
                 else {
                     console.log('Normal')
+                    localStorage.setItem('ABC19_login', true);
                     document.getElementById('user-name').innerHTML = res.name;
                     document.getElementById('user-pic').innerHTML = `<img src="${res.profile_pic}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
                 }
-                  
+
             } else {
                 document.getElementById("login").style.display = "block";
+                localStorage.setItem('ABC19_login', false);
             }
         }
-        async function updateLoginWithUrl(url){
+        async function updateLoginWithUrl(url) {
             let name = await url.searchParams.get("name");
             let email = await url.searchParams.get("email");
             let sessionID = await url.searchParams.get("sessionID");
             let image = await url.searchParams.get("image");
             localStorage.setItem('ABC19_SID', sessionID);
+            localStorage.setItem('ABC19_login', true);
             document.getElementById('user-name').innerHTML = name;
             document.getElementById('user-pic').innerHTML = `<img src="${image}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
         }
 
+        function updateStorageVar(){
+            if(localStorage.getItem('ABC19_SID') !== null){
+                localStorage.setItem('ABC19_login', true);
+            } else {
+                localStorage.setItem('ABC19_login', false);
+            }
+        }
+
+        function validate(){
+            if(document.getElementById('stateId').value.length === 0){
+                document.getElementById('stateId').style.borderColor = ''
+                return false;
+            }
+            if(document.getElementById('cityId').value.length === 0){
+                return false;
+            }
+        }
+
         let url_string = window.location.href;
         let url = new URL(url_string);
-        if(url.searchParams.get("name") !== null){
+        if (url.searchParams.get("name") !== null) {
             updateLoginWithUrl(url);
-        } else{
+        } else {
             loginCheck();
-
         }
         window.onload = function () {
             document.getElementById("preloader").style.display = "none";
+            updateStorageVar();
         }
+
+        document.getElementById('submit-btn').addEventListener('click', () => {
+            if (localStorage.getItem('ABC19_login') === true) {
+                if(validation()){
+
+                }
+                fetch('https://allaboutcovid-19.herokuapp.com/posts/')
+            } else {
+                Swal.fire({
+                    title: 'Login',
+                    text: "You need to be logged in before posting",
+                    icon: 'info',
+                    showClass: {
+                        popup: 'animated fadeInDown faster'
+                    },
+                    hideClass: {
+                        popup: 'animated fadeOutUp faster'
+                    },
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#FF073A',
+                    confirmButtonText: 'Login with Google'
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile';
+                    }
+                })
+            }
+        })
+
 
     </script>
 
