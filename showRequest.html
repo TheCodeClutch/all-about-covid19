@@ -111,30 +111,13 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12 col-lg-2"></div>
-		<div class="col-12 col-lg-8" id="posts" style="border : 2px solid black; text-align : center">
+		<div class="col-12 col-lg-8" id="posts" style="border : 2px solid black;">
 			<h2>Posts</h2>
 			<div id="posts-container"></div>
 		</div>
 		<div class="col-12 col-lg-2"></div>
 	</div>
 </div>
-
-
-<!-- {
-	"_id" : ObjectId("5ea70fa5e9d67449990c8f2e"),
-	"POST_ID" : "Help required17236834728",
-	"STATE" : "UP",
-	"CITY" : "Lucknow",
-	"TITLE" : "Help required",
-	"DESCRIPTION" : "This is the something important",
-	"TIME_MS" : 17236834728.0,
-	"TIME_FORMATTED" : "April 22, 2020",
-	"NAME" : "Nikhil Singh",
-	"EMAIL" : "nikhilsingh498@gmail.com",
-	"IMAGE_URL" : "https://lh3.googleusercontent.com/a-/AOh14GgTNTCAuZe6vihvitYBW32TmxSzZS5bI-H9GO_yfA",
-	"COMMENTS" : [],
-	"__v" : 0
-} -->
 
 
 
@@ -288,12 +271,12 @@
 																<h6 class="card-subtitle mb-2 text-muted">by ${data[i].NAME}</h6>
 															</div>
 															<div style="float: right; transform: translateY(50%);">
-													<span>${data[i].TITLE_FORMATTED}</span>
+													<span>${data[i].TIME_FORMATTED}</span>
 															</div>
 															<div style="margin-top : 20px">
 															<p class="card-text">${data[i].DESCRIPTION}</p>
-															<a class="card-link" onclick="changeText(event)" data-toggle="collapse" href="#post_id" role="button" aria-expanded="false" aria-controls="collapseExample">Show comments</a>
-															<a href="#" id="add-delete-comment" class="card-link">${add_post_delete_comment}</a>
+															<a class="card-link" onclick="changeText(event)" data-toggle="collapse" href='#${data[i].POST_ID}' role="button" aria-expanded="false" aria-controls="collapseExample">Show comments</a>
+															<a href="#" id="add-delete-comment" class="card-link">Show comment</a>
 														</div>
 														</div>
 													</div>
@@ -302,7 +285,7 @@
 													for(let j = 0; j < data[i].COMMENTS.length; j = j + 1){
 
 													content = content + `														
-													<div class="card">
+													<div class="card" style="padding-left : 40px">
 															<div class="card-metadata card-body">
 																<div class="name-email" style="float: left;">
 																	<img src='${data[i].COMMENTS[j].PIC_URL}' style="height: 40px; width : 40px; border-radius: 50%; margin-right : 20px"><span class="name">${data[i].COMMENTS[j].NAME}</span>
@@ -319,7 +302,7 @@
 
 													content = content + '</div>';
 												}// final for ending
-												document.getElementById('posts').style.display = 'none';
+												document.getElementById('posts').style.display = 'block';
 												document.getElementById('posts-container').innerHTML = content;
 											} // if resp !== msg ends
 										}) // fetch call response ends
