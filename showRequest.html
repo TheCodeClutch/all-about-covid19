@@ -367,10 +367,11 @@
 				hideClass: {
 					popup: 'animated fadeOutUp faster'
 				},
-				showCancelButton: false
+				showCancelButton: true
 			})
 				.then(res => {
 					// ajax call res.value 
+					if(res !== undefined){
 					let data = {
 						time_ms: Date.now(),
 						time_formatted: getFormattedTime(),
@@ -387,7 +388,7 @@
 					})
 					.then(res => {return res.json()})
 						.then(message => {
-							if (message.msg !== 'undefined') {
+							if (message.msg !== undefined) {
 								Swal.fire({
 									icon: 'success',
 									title: 'Yayayay',
@@ -401,7 +402,8 @@
 								})
 							}
 						})
-				})
+					}
+					})
 		} else {
 			Swal.fire({
 				title: 'Login',
