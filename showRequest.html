@@ -102,7 +102,7 @@
 						<option value="">Select City</option>
 					</select>
 				</div>
-				<div class="col-12" style="margin-top:30px; text-align:center; min-width : 100%">
+				<div class="col-12" style="margin-top:50px; text-align:center; min-width : 100%">
 					<button id="submit-btn" class="btn btn-primary"><strong>View all requests</strong></button>
 				</div>
 			</div>
@@ -210,7 +210,7 @@
 
 	function fieldReset(e) {
 		e.target.style.borderColor = 'lightgray'
-		document.getElementById('submit-btn').innerHTML = "Send Request";
+		document.getElementById('submit-btn').innerHTML = "View all requests";
 	}
 
 	function getFormattedTime() {
@@ -265,7 +265,7 @@
 						if (resp.msg !== undefined) {
 							let data = resp.msg;
 							let content = "";
-							for (let i = 0; i < data.length; i = i + 1) {
+							for (let i = data.length - 1; i >= 0; i = i - 1) {
 								content = content + `<div data-aos="zoom-out"  style="margin-top : 20px; margin-bottom : 20px">
 													<div class="card" style="width: 100%">
 														<div class="card-body">
@@ -282,7 +282,7 @@
 															<div style="margin-top : 20px">
 															<p class="card-text">${data[i].DESCRIPTION}</p>
 															<a class="card-link" onclick="changeText(event)" data-toggle="collapse" href='#${data[i].POST_ID}' role="button" aria-expanded="false" aria-controls="collapseExample">Show comments</a>
-															<a href="" onclick='addComment(event)' data-abc19-post-id='${data[i].POST_ID}' id="add-comment" class="card-link">Add comments</a>
+															<span href="void" onclick='addComment(event)' data-abc19-post-id='${data[i].POST_ID}' id="add-comment" class="card-link" style="cursor: pointer; color :#007bff">Add comments</span>
 														</div>
 														</div>
 													</div>
@@ -351,55 +351,83 @@
 		// show comment & hide comment
 	}
 
+	document.getElementsByClassName('swal2-confirm swal2-styled')[0].addEventListener('click', () => {
+		let data = {
+						time_ms: Date.now(),
+						time_formatted: getFormattedTime(),
+						description: document.getElementsByClassName('swal2-confirm swal2-styled')[0].value,
+						post_id: event.target.getAttribute('data-abc19-post-id')
+					}
+					console.log(data)
+					fetch('https://allaboutcovid-19.herokuapp.com/posts/savecomment', {
+						method: 'POST',
+						headers: {
+							'content-type': 'application/json',
+							'Authorization': localStorage.getItem('ABC19_SID')
+						},
+						body: JSON.stringify(data)
+					})
+					.then(res => {return res.json()})
+						.then(message => {
+							if (message.msg !== undefined) {
+								Swal.fire({
+									icon: 'success',
+									title: 'Yayayay',
+									text: message.msg
+								})
+							} else {
+								Swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: message.err
+								})
+							}
+						})
+	})
 
 	function addComment(event) {
-		console.log(event.target.getAttribute('data-abc19-post-id'))
-		Swal.fire({
-			input: 'textarea',
-			title: 'Comment box',
-			inputPlaceholder: 'Type your comment here...',
-			inputAttributes: {
-				'aria-label': 'Type your comment here'
-			},
-			confirmButtonText: 'Post comment', showClass: {
-				popup: 'animated fadeInDown faster'
-			},
-			hideClass: {
-				popup: 'animated fadeOutUp faster'
-			},
-			showCancelButton: false
-		})
-			.then(res => {
-				// ajax call res.value 
-				let data = {
-					time_ms: Date.now(),
-					time_formatted: getFormattedTime(),
-					description: res.value,
-					post_id: event.target.getAttribute('data-abc19-post-id')
-				}
-				fetch('https://allaboutcovid-19.herokuapp.com/posts/savecomment', {
-					method: 'POST',
-					headers: {
-						'content-type': 'application/json',
-					},
-					body: JSON.stringify(data)
-				})
-					.then(res => {
-						if (res.msg !== undefined) {
-							Swal.fire({
-								icon: 'success',
-								title: 'Yayayay',
-								text: res.msg
-							})
-						} else {
-							Swal.fire({
-								icon: 'error',
-								title: 'Oops...',
-								text: res.err
-							})
-						}
-					})
+		if (localStorage.getItem('ABC19_login') === 'true') {
+			Swal.fire({
+				input: 'textarea',
+				title: 'Comment box',
+				inputPlaceholder: 'Type your comment here...',
+				inputAttributes: {
+					'aria-label': 'Type your comment here'
+				},
+				confirmButtonText: 'Post comment', showClass: {
+					popup: 'animated fadeInDown faster'
+				},
+				hideClass: {
+					popup: 'animated fadeOutUp faster'
+				},
+				showCancelButton: true
 			})
+		} else {
+			Swal.fire({
+				title: 'Login',
+				text: "You need to be logged in before posting",
+				icon: 'info',
+				showClass: {
+					popup: 'animated fadeInDown faster'
+				},
+				hideClass: {
+					popup: 'animated fadeOutUp faster'
+				},
+				showCancelButton: false,
+				confirmButtonColor: '#FFFFFF',
+				cancelButtonColor: '#FF073A',
+				confirmButtonText: 'Login with Google'
+			}).then((result) => {
+				if (result.value) {
+					window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile';
+				}
+			})
+
+			document.getElementsByClassName('swal2-confirm swal2-styled')[0].innerHTML = `<img width="20px" style="margin-bottom: 2px; margin-right: 2px;" src="./assets/google.webp"
+                            alt="Google sign-in">
+                        Login with Google`
+			document.getElementsByClassName('swal2-confirm swal2-styled')[0].style.color = '#000000'
+		}
 	}
 
 </script>
