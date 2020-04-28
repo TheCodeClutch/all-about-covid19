@@ -47,3 +47,15 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
+
+@media only screen and (max-width: 900px) {
+	.time {
+		display: block;
+	}
+}
+@media only screen and (min-width: 900px) {
+	.time {
+		display: none;
+	}
+
+}
