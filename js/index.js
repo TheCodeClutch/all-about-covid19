@@ -13,5 +13,4 @@ window.onload = () => {
             document.getElementById("hashtag").innerHTML = quotes[i];
         }, i * 2000);
     }
-
 }
