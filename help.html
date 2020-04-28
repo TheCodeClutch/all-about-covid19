@@ -279,16 +279,24 @@
                         showClass: {
                             popup: 'animated fadeInDown faster'
                         },
-                        hideClass: {
-                            popup: 'animated fadeOutUp faster'
-                        },
-                        showCancelButton: false,
-                        confirmButtonColor: '#FFFFFF',
-                        cancelButtonColor: '#FF073A',
-                        confirmButtonText: 'Login with Google'
-                    }).then((result) => {
-                        if (result.value) {
-                            window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile';
+                        body: JSON.stringify(data)
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.msg !== undefined){
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Yayayay',
+                                text: data.msg
+                            })
+                            document.getElementById('submit-btn').innerHTML = "Send Request";
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.err
+                            })
+                            document.getElementById('submit-btn').innerHTML = "Send Request";
                         }
                     })
 
