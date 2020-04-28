@@ -351,33 +351,14 @@
 		// show comment & hide comment
 	}
 
-
-	function addComment(event) {
-		if (localStorage.getItem('ABC19_login') === 'true') {
-			Swal.fire({
-				input: 'textarea',
-				title: 'Comment box',
-				inputPlaceholder: 'Type your comment here...',
-				inputAttributes: {
-					'aria-label': 'Type your comment here'
-				},
-				confirmButtonText: 'Post comment', showClass: {
-					popup: 'animated fadeInDown faster'
-				},
-				hideClass: {
-					popup: 'animated fadeOutUp faster'
-				},
-				showCancelButton: true
-			})
-				.then(res => {
-					// ajax call res.value 
-					if(res !== undefined){
-					let data = {
+	document.getElementsByClassName('swal2-confirm swal2-styled')[0].addEventListener('click', () => {
+		let data = {
 						time_ms: Date.now(),
 						time_formatted: getFormattedTime(),
-						description: res.value,
+						description: document.getElementsByClassName('swal2-confirm swal2-styled')[0].value,
 						post_id: event.target.getAttribute('data-abc19-post-id')
 					}
+					console.log(data)
 					fetch('https://allaboutcovid-19.herokuapp.com/posts/savecomment', {
 						method: 'POST',
 						headers: {
@@ -402,8 +383,25 @@
 								})
 							}
 						})
-					}
-					})
+	})
+
+	function addComment(event) {
+		if (localStorage.getItem('ABC19_login') === 'true') {
+			Swal.fire({
+				input: 'textarea',
+				title: 'Comment box',
+				inputPlaceholder: 'Type your comment here...',
+				inputAttributes: {
+					'aria-label': 'Type your comment here'
+				},
+				confirmButtonText: 'Post comment', showClass: {
+					popup: 'animated fadeInDown faster'
+				},
+				hideClass: {
+					popup: 'animated fadeOutUp faster'
+				},
+				showCancelButton: true
+			})
 		} else {
 			Swal.fire({
 				title: 'Login',
