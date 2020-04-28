@@ -140,12 +140,10 @@
                 })
                 let res = await resp.json()
                 if (res.status === 401) {
-                    console.log('Hello')
                     document.getElementById("login").style.display = "block";
                     localStorage.setItem('ABC19_login', false);
                 }
                 else {
-                    console.log('Normal')
                     localStorage.setItem('ABC19_login', true);
                     document.getElementById('user-name').innerHTML = res.name;
                     document.getElementById('user-pic').innerHTML = `<img src="${res.profile_pic}" style="height : 40px; width : 40px; border-radius : 50%; margin-right : 15px">`
@@ -245,11 +243,17 @@
                     .then(data => {
                         console.log()
                         if(data.msg !== undefined){
-                            document.getElementById('submit-btn').innerHTML = data.msg;
-                            document.getElementById('submit-btn').style.backgroundColor = '#28a745'
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Yayayay',
+                                text: data.msg
+                            })
                         } else {
-                            document.getElementById('submit-btn').innerHTML = data.err;
-                            document.getElementById('submit-btn').style.backgroundColor = '#FF073A'
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.err
+                            })
                         }
                         
                     })
