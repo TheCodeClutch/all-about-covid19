@@ -8,9 +8,8 @@ window.onload = () => {
         "#EverydayIsASunday", "#CoronaWarriors", "#MyGovFactCheck"];
 
     for (let i = 0; i < quotes.length; i++) {
-        console.log(quotes[i]);
         setTimeout(function () {
             document.getElementById("hashtag").innerHTML = quotes[i];
-        }, i * 2000);
+        }, i * 4000);
     }
 }

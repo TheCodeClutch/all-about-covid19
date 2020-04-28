@@ -1,6 +1,6 @@
 function getToken(currToken) {
 	console.log(currToken)
-	var dataPromise = fetch('https://thecodeclutch.herokuapp.com/auth/getToken', {
+	var dataPromise = fetch('https://allaboutcovid-19.herokuapp.com/auth/getToken', {
 		method: 'GET',
 		headers: {
 			Authorization: currToken

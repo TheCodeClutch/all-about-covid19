@@ -24,7 +24,6 @@ function resize() {
 
 fetch('https://api.covid19india.org/data.json')
 	.then(res => {
-		console.log(res)
 		return res.json();
 	})
 	.then(data => {
@@ -87,14 +86,16 @@ window.onload = () => {
 	window.addEventListener('resize', () => {
 		resize();
 	})
-	var quotes = ["#StaySafe", "#StayAtHome", "#SocialDistancing", "#IndiaFightsCorona", "#SafeHands", "#TogetherAtHome", "#QuarantineAndChill",
-		"#FlattenTheCurve", "#Lockdown", "#WorkingFromHome", "#ViewFromMyWindow", "#MyPandemicSurvivalPlan", "#IndiaFightsBack", "#WithMe",
-		"#EverydayIsASunday", "#CoronaWarriors", "#MyGovFactCheck"];
 
-	for (let i = 0; i < quotes.length; i++) {
-		console.log(quotes[i]);
-		setTimeout(function () {
-			document.getElementById("hashtag").innerHTML = quotes[i];
-		}, i * 2000);
-	}
+	let quotes = ["#StaySafe", "#StayAtHome", "#SocialDistancing", "#IndiaFightsCorona", "#SafeHands", "#TogetherAtHome", "#QuarantineAndChill",
+	"#FlattenTheCurve", "#Lockdown", "#WorkingFromHome", "#ViewFromMyWindow", "#MyPandemicSurvivalPlan", "#IndiaFightsBack", "#WithMe",
+	"#EverydayIsASunday", "#CoronaWarriors", "#MyGovFactCheck"];
+	
+		for (let i = 0; i < quotes.length; i++) {
+			setTimeout(function () {
+				document.getElementById("hashtag").innerHTML = quotes[i];
+			}, i * 4000);
+		}
+
 }
+
