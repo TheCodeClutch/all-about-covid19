@@ -73,7 +73,7 @@
 				</div>
 
 				<div class="col-6" style="text-align: right;">
-					<button id="all-requests" class="btn btn-primary"><strong>Post Request</strong></button>
+					<a href="./help.html"><button id="all-requests" class="btn btn-primary"><strong>Post Request</strong></button></a>
 				</div>
 				<div class="col-12">
 					<span style="font-size : 14px">*Login before commenting on any post</span>
@@ -144,25 +144,7 @@
 
 <script>
 
-
-	// document.getElementById('add-comment').addEventListener('click', (req, res) => {
-	// 	// Popup for entering comment
-
-	// 	// On enetring comment validate for min of 50 char
-
-	// 	// if (validate == true)
-	// 			// send a request on success or failure show a time based popup
-	// 			// then refresh the page with updated comments
-	// 	// else 
-	// 			// make box red field reset and stuff
-	// })
-
-
-
-
 	document.getElementById("preloader").style.display = "block";
-
-
 
 	async function loginCheck() {
 		if (localStorage.getItem('ABC19_SID') !== null) {
@@ -282,7 +264,7 @@
 															<p class="card-text" style="text-align: justify">${data[i].DESCRIPTION}</p>
 														</div>
 														<div class="col-12" style="margin-top : 20px">
-															<input data-comment-attr='comm-attr-${data[i].POST_ID}' type="text" style="width: 100%; margin-right : 20px; padding : 3px; margin-top : 10px" >
+															<input id='comm-attr-${data[i].POST_ID}' type="text" style="width: 100%; margin-right : 20px; padding : 3px; margin-top : 10px" >
 														</div>
 														<div class="col-12" >
 															<div style="float : right">
@@ -315,59 +297,43 @@
 								}
 								content = content + `</div></div>`
 
-							} // final for ending
+							} 
 							document.getElementById('submit-btn').innerHTML = "View all requests"
 							document.getElementById('post-heading').innerHTML = "Posts"
 							document.getElementById('posts').style.display = 'block';
 							document.getElementById('posts-container').innerHTML = content;
-						} // if resp !== msg ends
-					}) // fetch call response ends
+						} 
+					}) 
 
-			} // validation ends
-		})// click 
-	} // window onload ends
-			// 								else {
-			// 									// popup error normal oops
-			// 									Swal.fire({
-			// 											icon: 'error',
-			// 											title: 'Oops...',
-			// 											text: 'There was some error while fetching posts.\n Try again'
-			// 									})
-			// 								}
-
-			// 						})
-			// 				}
-			// })
-			// }
-
+			} 
+		})
+	}
 
 
 </script>
 <script>
 
 
-	function changeText(e) {
-		console.log(e.target.innerText)
-		if (e.target.innerHTML === "Show comments") {
-			console.log('Hello')
-			e.target.innerHTML = "Hide comments"
-			console.log(e.target.innerText)
+	function changeText(event) {
+		if (event.target.innerHTML === "Show comments") {
+			event.target.innerHTML = "Hide comments"
+		} else if (event.target.innerHTML === "Hide comments") {
+			event.target.innerHTML = "Show comments"
 		}
-		if (e.target.innerHTML === "Hide comments") {
-			e.target.innerHTML = "Show comments"
-		}
-		// show comment & hide comment
 	}
 
-
-
 	function postComment(event){
-		let id = event.target.getAttribute('data-comment-attr');
+		let idVal = event.target.getAttribute('data-comment-attr');
+		if(document.getElementById(String(idVal)).value.length < 1){
+			document.getElementById(String(idVal)).style.borderColor = '#FF073A'
+			return;
+		}
 		if (localStorage.getItem('ABC19_login') === 'true') {
+			event.target.innerHTML = "Posting..."
 			let data = {
 						time_ms: Date.now(),
 						time_formatted: getFormattedTime(),
-						description: document.getElementById(id).value,
+						description: document.getElementById(String(idVal)).value,
 						post_id: event.target.getAttribute('data-abc19-post-id')
 					}
 					console.log(data)
@@ -381,6 +347,7 @@
 					})
 					.then(res => {return res.json()})
 						.then(message => {
+							event.target.innerHTML = "Post"
 							if (message.msg !== undefined) {
 								Swal.fire({
 									icon: 'success',
