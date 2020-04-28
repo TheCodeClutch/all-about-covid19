@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Google fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+    <title>COVID'19|FAQ's</title>
+
+    <style>
+        body {
+            font-family: 'Lora', serif;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #ECECEC;
+            text-align: center;
+            height: 50px;
+            position:absolute;
+            bottom:0;
+        }
+
+        #preloader {
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            text-align: center;
+            background: white url('../assets/preloader-md.gif') center center no-repeat;
+        }
+        p {
+            color: #1e71d7;
+            font-size:18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" id="preloader">
+
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+        <img src="assets/covid-logo.PNG" alt="covid-logo" style="width: 42px; height:40px;">
+		<a class="navbar-brand" href="index.html" style="padding-left:5px;">COVID-19</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active" style="padding-left : 20px; padding-right : 20px">
+                    <a class="nav-link" href="index.html">Information</a>
+                </li>
+                <li class="nav-item" style="padding-left : 20px; padding-right : 20px">
+                    <a class="nav-link" href="./statistics.html">Statistics</a>
+                </li>
+                <li class="nav-item" style="padding-left : 20px; padding-right : 150px; display: inline-block;">
+                    <a class="nav-link" href="help.html">Help <span class="badge badge-secondary"
+                            style="background-color: transparent; color:black;">
+                            <h6>&#9888;</h6>
+                        </span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-3"></div>
+            <div class="col-12 col-lg-6" style="margin-top:50px;">
+                <div style="text-align:center;">
+                    <h2>FAQ's</h2>
+                </div>
+                <div style="margin-top:50px;">
+                    <h4>Are you official?</h4>
+                    <p>No.</p>
+
+                    <h4>What are the sources and how is the data gathered for this project?</h4>
+                    <p>We are using the offical handles to update our numbers.</p>
+
+                    <h4>Who are you and what do you aim by building this project?</h4>
+                    <p>We are students from the Vellore Institute of Technology, Vellore, Tamil Nadu, India. We have curated and verified the data being displayed on the website.
+                        We aim to give all of you a helping hand in this time of crisis, so that we could fight against it and could also prevent the further spread of the virus.
+                        We hope to provide knowledge to all so that people can make informed decisions.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3"></div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div style="padding:10px 0px;">
+            &copy; 2020 Copyright:
+            <a href="about.html">WhoWeAre</a>
+        </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById("preloader").style.display = "block";
+
+        window.onload = () => {
+            document.getElementById("preloader").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

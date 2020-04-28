@@ -1,5 +1,5 @@
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Lora', serif;
 }
 #preloader {
 	position: fixed;
@@ -20,6 +20,12 @@ body {
 }
 #cover-d{
 	color: #6c757d
+}
+footer {
+	width: 100%;
+	background-color:#ECECEC;
+	text-align: center;
+	height:50px;
 }
 @media only screen and (min-width: 900px) {
 	.count {
