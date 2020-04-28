@@ -102,8 +102,8 @@
 						<option value="">Select City</option>
 					</select>
 				</div>
-				<div class="col-12" style="margin-top:50px; text-align:center; min-width : 100%">
-					<button id="submit-btn" class="btn btn-primary"><strong>View all requests</strong></button>
+				<div class="col-12" style="margin-top:50px; text-align:center;">
+					<button id="submit-btn" style=" min-width : 60%" class="btn btn-primary"><strong>View all requests</strong></button>
 				</div>
 			</div>
 		</div>
@@ -122,7 +122,6 @@
 		<div class="col-12 col-lg-2"></div>
 	</div>
 </div>
-
 
 
 
@@ -278,12 +277,21 @@
 															</div>
 															<div class="time" style="float: right; transform: translateY(50%);">
 													<span>${data[i].TIME_FORMATTED}</span>
-															</div>
+															</div>       
 															<div style="margin-top : 20px">
-															<p class="card-text">${data[i].DESCRIPTION}</p>
-															<a class="card-link" onclick="changeText(event)" data-toggle="collapse" href='#${data[i].POST_ID}' role="button" aria-expanded="false" aria-controls="collapseExample">Show comments</a>
-															<span href="void" onclick='addComment(event)' data-abc19-post-id='${data[i].POST_ID}' id="add-comment" class="card-link" style="cursor: pointer; color :#007bff">Add comments</span>
+															<p class="card-text" style="text-align: justify">${data[i].DESCRIPTION}</p>
 														</div>
+														<div class="col-12" style="margin-top : 20px">
+															<input data-comment-attr='comm-attr-${data[i].POST_ID}' type="text" style="width: 100%; margin-right : 20px; padding : 3px; margin-top : 10px" >
+														</div>
+														<div class="col-12" >
+															<div style="float : right">
+															<button class="btn btn-primary" data-abc19-post-id='${data[i].POST_ID}' onclick="postComment(event)" data-comment-attr='comm-attr-${data[i].POST_ID}'  style="padding : 3px 20px 3px 20px; min-width : 40%; transform : translateY(-5%); margin-top : 10px">Post</button>
+																</div>
+																<div style="float: left; padding-top : 13px">
+																	<a class="card-link" onclick="changeText(event)" data-toggle="collapse" href='#${data[i].POST_ID}' role="button" aria-expanded="false" aria-controls="collapseExample">Show comments</a>
+																</div>
+															</div>
 														</div>
 													</div>
 													<div class="collapse" id='${data[i].POST_ID}'>`
@@ -305,9 +313,9 @@
 															</div>
 														</div>`
 								}
+								content = content + `</div></div>`
 
-								content = content + '</div></div>';
-							}// final for ending
+							} // final for ending
 							document.getElementById('submit-btn').innerHTML = "View all requests"
 							document.getElementById('post-heading').innerHTML = "Posts"
 							document.getElementById('posts').style.display = 'block';
@@ -351,11 +359,15 @@
 		// show comment & hide comment
 	}
 
-	document.getElementsByClassName('swal2-confirm swal2-styled')[0].addEventListener('click', () => {
-		let data = {
+
+
+	function postComment(event){
+		let id = event.target.getAttribute('data-comment-attr');
+		if (localStorage.getItem('ABC19_login') === 'true') {
+			let data = {
 						time_ms: Date.now(),
 						time_formatted: getFormattedTime(),
-						description: document.getElementsByClassName('swal2-confirm swal2-styled')[0].value,
+						description: document.getElementById(id).value,
 						post_id: event.target.getAttribute('data-abc19-post-id')
 					}
 					console.log(data)
@@ -383,25 +395,6 @@
 								})
 							}
 						})
-	})
-
-	function addComment(event) {
-		if (localStorage.getItem('ABC19_login') === 'true') {
-			Swal.fire({
-				input: 'textarea',
-				title: 'Comment box',
-				inputPlaceholder: 'Type your comment here...',
-				inputAttributes: {
-					'aria-label': 'Type your comment here'
-				},
-				confirmButtonText: 'Post comment', showClass: {
-					popup: 'animated fadeInDown faster'
-				},
-				hideClass: {
-					popup: 'animated fadeOutUp faster'
-				},
-				showCancelButton: true
-			})
 		} else {
 			Swal.fire({
 				title: 'Login',
@@ -422,13 +415,13 @@
 					window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile';
 				}
 			})
-
 			document.getElementsByClassName('swal2-confirm swal2-styled')[0].innerHTML = `<img width="20px" style="margin-bottom: 2px; margin-right: 2px;" src="./assets/google.webp"
                             alt="Google sign-in">
                         Login with Google`
 			document.getElementsByClassName('swal2-confirm swal2-styled')[0].style.color = '#000000'
 		}
 	}
+
 
 </script>
 </body>
