@@ -1,0 +1,49 @@
+body {
+	font-family: 'Roboto', sans-serif;
+}
+#preloader {
+	position: fixed;
+	height : 100vh;
+	z-index : 100;
+	text-align: center;
+	background: white url('../assets/preloader-md.gif') center center no-repeat;
+}
+label {
+    transform: translate(20%, 90%);
+    padding-left : 5px;
+    padding-right : 5px;
+    background-color: white;
+    font-size : 14px
+}
+select, input, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 5px;
+    border:2px solid lightgray;
+    padding:10px;
+    width: 100%;
+    outline:none;
+    resize:none;
+}
+#submit-btn {
+    padding:5px;
+    width:30%;
+    border-radius: 5px;
+}
+
+#user-details {
+    margin-right : 20px;
+    margin-left : 10px
+}
+
+select, option {
+    background-color: white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
