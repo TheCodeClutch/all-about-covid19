@@ -78,7 +78,6 @@
 	<div class="row">
 		<div class="col-12 col-lg-2"></div>
 		<div class="col-12 col-lg-8" id="posts">
-			<h2 style="text-align: center;" id="post-heading"></h2>
 			<div id="posts-container"></div>
 		</div>
 		<div class="col-12 col-lg-2"></div>
@@ -287,9 +286,6 @@
 								content = content + `</div></div>`
 
 							} 
-							document.getElementById('submit-btn').innerHTML = "View all requests"
-							document.getElementById('post-heading').innerHTML = "Posts"
-							document.getElementById('posts').style.display = 'block';
 							document.getElementById('posts-container').innerHTML = content;
 						} 
 
