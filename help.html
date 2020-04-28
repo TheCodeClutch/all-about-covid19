@@ -217,9 +217,7 @@
         window.onload = function () {
             document.getElementById("preloader").style.display = "none";
             updateStorageVar();
-        }
-
-        document.getElementById('submit-btn').addEventListener('click', () => {
+            document.getElementById('submit-btn').addEventListener('click', () => {
             if (localStorage.getItem('ABC19_login') === true) {
                 if(validate()){
                     let data = {
@@ -252,7 +250,8 @@
                 } else {
                     console.log('Non validated')
                 }
-            } else {
+            } 
+            else {
                 console.log('Popup')
                 Swal.fire({
                     title: 'Login',
@@ -280,6 +279,8 @@
                 document.getElementsByClassName('swal2-confirm swal2-styled')[0].style.color = '#000000'
             }
         })
+        }
+
 
 
     </script>
