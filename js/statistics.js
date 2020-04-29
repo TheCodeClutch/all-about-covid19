@@ -34,6 +34,7 @@ fetch('https://api.covid19india.org/data.json')
 		document.getElementById('inc-confirmed').innerHTML = data.statewise[0].deltaconfirmed
 		document.getElementById('inc-recovered').innerHTML = data.statewise[0].deltarecovered
 		document.getElementById('inc-deceased').innerHTML = data.statewise[0].deltadeaths
+		document.getElementById('update-time').innerHTML = data.statewise[0].lastupdatedtime
 		let statesArray = data.statewise;
 		let content = "";
 		for (let i = 1; i < statesArray.length; i = i + 1) {
