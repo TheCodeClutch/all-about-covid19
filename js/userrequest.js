@@ -89,11 +89,17 @@ function deletePost(event) {
 					cancelButtonColor: '#FF073A',
 					confirmButtonText: 'Ok'
 				})
+				.then(res => {
+					window.location.href = "https://allaboutcovid19.netlify.app/userrequest.html"
+				})
 			} else {
 				Swal.fire({
 					icon: 'error',
 					title: 'Oops...',
 					text: data.err
+				})
+				.then(res => {
+					window.location.href = "https://allaboutcovid19.netlify.app/userrequest.html"
 				})
 			}
 		})
