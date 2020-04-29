@@ -1,11 +1,23 @@
 document.getElementById("preloader").style.display = "block";
 
+
+function getFormattedTime(dt) {
+	let arr = dt.split(" ");
+	let date = arr[0].split("/")[0]
+	let month = arr[0].split("/")[1]
+	let year = arr[0].split("/")[2]
+	let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	var dateString = date + " " + monthNames[month - 1] + " " + year + ", " + arr[1]
+	return dateString;
+}
+
+
 function resize() {
 	if (window.outerWidth < 990) {
 		document.getElementById('c').innerHTML = 'Conf';
 		document.getElementById('a').innerHTML = 'Act';
 		document.getElementById('r').innerHTML = 'Rec';
-		document.getElementById('d').innerHTML = 'Dead';
+		document.getElementById('d').innerHTML = 'Death';
 		document.getElementById('tc').innerHTML = 'C';
 		document.getElementById('ta').innerHTML = 'A';
 		document.getElementById('tr').innerHTML = 'R';
@@ -34,7 +46,7 @@ fetch('https://api.covid19india.org/data.json')
 		document.getElementById('inc-confirmed').innerHTML = data.statewise[0].deltaconfirmed
 		document.getElementById('inc-recovered').innerHTML = data.statewise[0].deltarecovered
 		document.getElementById('inc-deceased').innerHTML = data.statewise[0].deltadeaths
-		document.getElementById('update-time').innerHTML = data.statewise[0].lastupdatedtime
+		document.getElementById('update-time').innerHTML = getFormattedTime(data.statewise[0].lastupdatedtime)
 		let statesArray = data.statewise;
 		let content = "";
 		for (let i = 1; i < statesArray.length; i = i + 1) {
