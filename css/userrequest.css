@@ -41,12 +41,12 @@ select, option {
     background-color: white;
 }
 
-footer {
+#footer {
 	width: 100%;
 	background-color:#ECECEC;
 	text-align: center;
     height:50px;
-    position: sticky;
+    position: absolute;
     bottom : 0
 }
 
