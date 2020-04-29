@@ -1,0 +1,30 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+#preloader {
+	position: fixed;
+	height : 100vh;
+	z-index : 100;
+	text-align: center;
+	background: white url('../assets/preloader-md.gif') center center no-repeat;
+}
+footer {
+	width: 100%;
+	background-color:#ECECEC;
+	text-align: center;
+	height:50px;
+}
+
+h5{
+	font-weight: 1000;
+}
+
+.navbar-light .navbar-toggler {
+	border : none;
+	outline : none
+}
+
+.card-columns {
+	padding : 30px;
+	padding-top : 10px
+}
