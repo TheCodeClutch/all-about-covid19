@@ -1,0 +1,22 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+#preloader {
+	position: fixed;
+	height : 100vh;
+	z-index : 100;
+	text-align: center;
+	background: white url('../assets/preloader-md.gif') center center no-repeat;
+}
+footer {
+	width: 100%;
+	background-color:#ECECEC;
+	text-align: center;
+	height:50px;
+}
+
+
+.navbar-light .navbar-toggler {
+	border : none;
+	outline : none
+}

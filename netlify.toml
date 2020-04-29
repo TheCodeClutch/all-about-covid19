@@ -1,3 +1,3 @@
 [[headers]]
-  for = "/assets/who/gifs/*"
+  for = "./assets/who/gifs/*"
 	max-age=8640000000
