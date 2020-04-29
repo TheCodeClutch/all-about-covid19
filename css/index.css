@@ -14,3 +14,9 @@ footer {
 	text-align: center;
 	height:50px;
 }
+
+
+.navbar-light .navbar-toggler {
+	border : none;
+	outline : none
+}

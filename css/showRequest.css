@@ -13,8 +13,6 @@ footer {
 	background-color:#ECECEC;
 	text-align: center;
 	height:50px;
-	position:absolute;
-	bottom:0;
 }
 label {
     transform: translate(20%, 90%);
@@ -73,5 +71,13 @@ input:-webkit-autofill:active  {
 	.time {
 		display: block;
 	}
+    footer{
+        margin-top : 50px
+    }
+}
 
+
+.navbar-light .navbar-toggler {
+    border : none;
+    outline : none
 }

@@ -1,0 +1,36 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+footer {
+	width: 100%;
+	background-color: #ECECEC;
+	text-align: center;
+	height: 50px;
+}
+
+#preloader {
+	position: fixed;
+	height: 100vh;
+	z-index: 100;
+	text-align: center;
+	background: white url('../assets/preloader-md.gif') center center no-repeat;
+}
+
+p {
+	color: #1e71d7;
+	font-size: 18px;
+	font-weight: 600;
+	padding-bottom: 20px;
+}
+
+.text {
+	background: linear-gradient(to right, #ff8a00, #da1b60);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.navbar-light .navbar-toggler {
+	border : none;
+	outline : none
+}

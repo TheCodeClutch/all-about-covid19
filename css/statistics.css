@@ -64,3 +64,9 @@ footer {
 		font-size: 10px;
 	}
 }
+
+
+.navbar-light .navbar-toggler {
+	border : none;
+	outline : none
+}

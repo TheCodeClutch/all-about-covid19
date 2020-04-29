@@ -7,48 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="keywords" content="coronavirus, pandemic, COVID'19, statistics, COVID news">
     <meta name="description" content="COVID guide and helper">
-    <meta name="author" content="Nikhil Singh">
+    <meta name="author" content="Nikhil Singh, Shreya Maheshwari">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon_io/site.webmanifest">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!--Google fonts  -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/about.css">
     <title>COVID'19 | FAQ's</title>
-
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        footer {
-            width: 100%;
-            background-color: #ECECEC;
-            text-align: center;
-            height: 50px;
-            position: absolute;
-            bottom: 0;
-        }
-
-        #preloader {
-            position: fixed;
-            height: 100vh;
-            z-index: 100;
-            text-align: center;
-            background: white url('../assets/preloader-md.gif') center center no-repeat;
-        }
-
-        p {
-            color: #1e71d7;
-            font-size: 18px;
-            font-weight: 600;
-            padding-bottom: 20px;
-        }
-
-        .text {
-            background: linear-gradient(to right, #ff8a00, #da1b60);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
 </head>
 
 <body>
@@ -71,7 +40,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active" style="padding-left : 20px; padding-right : 20px">
+                <li class="nav-item" style="padding-left : 20px; padding-right : 20px">
                     <a class="nav-link" href="index.html">Information</a>
                 </li>
                 <li class="nav-item" style="padding-left : 20px; padding-right : 20px">
@@ -88,7 +57,7 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-bottom : 60px;">
         <div class="row">
             <!-- HashTags and Quotes -->
             <div class="col-12" style="background-color: #FFFAFA; height:30px; text-align:center;">
@@ -107,8 +76,8 @@
                     <p>We are using the offical handles to update our numbers.</p>
 
                     <h4>Who are you and what do you aim by building this project?</h4>
-                    <p>We, <a href="linkedin.com/in/nikhils4" class="text">Nikhil Singh</a> and <a
-                            href="linkedin.com/in/mshreya9" class="text">Shreya Maheshwari</a>, are student developers, pursuing Bachelors of Technology from 
+                    <p>We, <a href="https://linkedin.com/in/nikhils4" class="text">Nikhil Singh</a> and <a
+                            href="https://linkedin.com/in/mshreya9" class="text">Shreya Maheshwari</a>, are student developers, pursuing Bachelors of Technology from 
                         Vellore Institute of Technology, Vellore, Tamil Nadu, India. We have curated and verified the
                         data being displayed on the website.
                         We aim to give all of you a helping hand in this time of crisis, so that we could fight against
@@ -130,7 +99,6 @@
         </div>
     </footer>
 
-    <script src="./js/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -153,7 +121,7 @@
             for (let i = 0; i < quotes.length; i++) {
                 setTimeout(function () {
                     document.getElementById("hashtag").innerHTML = quotes[i];
-                }, i * 2000);
+                }, i * 4000);
             }
         }
     </script>
