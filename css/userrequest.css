@@ -46,7 +46,7 @@ footer {
 	background-color:#ECECEC;
 	text-align: center;
     height:50px;
-    position: absolute;
+    position: sticky;
     bottom : 0
 }
 
