@@ -34,9 +34,6 @@ button{
 	#covid {
 		display: none;
 	}
-	#covid-small {
-		display: block;
-	}
 	#cover{
 		margin-top: 50px;
 	}
@@ -44,9 +41,6 @@ button{
 @media only screen and (min-width: 900px) {
 	#covid{
 		display: block;
-	}
-	#covid-small {
-		display: none;
 	}
 	#cover{
 		margin-top: 150px;
