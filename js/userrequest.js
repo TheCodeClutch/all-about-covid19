@@ -257,6 +257,9 @@ function postComment(event) {
 						title: 'Yayayay',
 						text: message.msg
 					})
+					.then(res => {
+						window.location.href = "https://allaboutcovid19.netlify.app/userrequest.html"
+					})
 				} else {
 					Swal.fire({
 						icon: 'error',
