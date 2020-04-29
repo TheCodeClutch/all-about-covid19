@@ -109,6 +109,14 @@ window.onload = function () {
 					if (resp.msg !== undefined) {
 						let data = resp.msg;
 						let content = "";
+						if(data.length === 0){
+							document.getElementById('submit-btn').innerHTML = "View all requests"
+							document.getElementById('post-heading').innerHTML = "Posts"
+							document.getElementById('posts').style.display = 'block';
+							document.getElementById('posts-container').style.textAlign = "center";
+							document.getElementById('posts-container').innerHTML = 'No posts to show, post one <a href="https://allaboutcovid19.netlify.app/help.html">here</a>';
+							return;
+						}
 						for (let i = data.length - 1; i >= 0; i = i - 1) {
 							content = content + `<div data-aos="zoom-out"  style="margin-top : 20px; margin-bottom : 20px">
 												<div class="card" style="width: 100%">
@@ -164,6 +172,7 @@ window.onload = function () {
 						document.getElementById('submit-btn').innerHTML = "View all requests"
 						document.getElementById('post-heading').innerHTML = "Posts"
 						document.getElementById('posts').style.display = 'block';
+						document.getElementById('posts-container').style.textAlign = "justify";
 						document.getElementById('posts-container').innerHTML = content;
 					}
 				})
