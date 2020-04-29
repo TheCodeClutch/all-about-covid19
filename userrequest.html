@@ -231,9 +231,10 @@
                                 if (resp.msg !== undefined) {
 							let data = resp.msg;
                             let content = "";
-                            if(data.msg.length === 0){
+                            if(data.length === 0){
                                 document.getElementById('login-status').innerHTML = 'No posts to show, post one <a href="https://allaboutcovid19.netlify.app/help.html">here</a>'
                                 document.getElementById('login-status').style.display = "block";
+                                return;
                             }
                             document.getElementById('login-status').style.display = "none";
 							for (let i = data.length - 1; i >= 0; i = i - 1) {
