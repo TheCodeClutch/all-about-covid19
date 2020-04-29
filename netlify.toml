@@ -1,0 +1,4 @@
+[[headers]]
+  for = "/assets/who/gifs/*"
+	[headers.values]
+  cache-control: max-age=8640000000
