@@ -35,7 +35,7 @@ Reach out to us at allaboutcovid19.feedback@gmail.com
 
 ## Contributions
 
-First of all, thanks a lot for taking out time to contribute. 
+First of all, thanks a lot for taking out time to contribute. :grinning:
 
 If you are new to open source, check out this [guide](https://opensource.guide/how-to-contribute/). Further, for contributing, check out this [guide](CONTRIBUTING.md)
 
