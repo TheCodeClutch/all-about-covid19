@@ -1,4 +1,4 @@
-# COVID'19 Guide and Helper
+# COVID-19 Guide and Helper
 
 1. Displays all the tweets of the official government handles.
 
