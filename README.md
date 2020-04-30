@@ -4,7 +4,7 @@
 
 2. Displays all the statistics related to COVID like, confirmed, recovered, active, deceased cases in India and Indian states.
 
-3. There is also a help station that would allow the user to post request publicly for any kind of help. Other people can comment on the request for guide and support.
+3. There is also a help station that would allow the user to post requests publicly for any kind of help. Other people can comment on the request for guidance and support.
 
 [Check it out here!](https://allaboutcovid19.netlify.app/)
 
