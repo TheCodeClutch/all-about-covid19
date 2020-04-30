@@ -17,7 +17,7 @@
 No
 
 ### What are the sources and how is the data gathered for this project?
-We are using the offical twitter handles of Government of India to provide news and information, all the guidlines displayed on the website are part of WHO official guidelines, and we are gathering numbers for the website data from this source. We want to thank these guys for making it open source and for helping all of us during this pandemic time.
+We are using the official twitter handles of the Government of India to provide news and information on our website. All the guidelines displayed are part of WHO official guidelines, and we are gathering numbers for the website data from this [source](https://documenter.getpostman.com/view/10724784/SzYXXKmA?version=latest). We want to thank these guys for making it open source and for helping all of us during this pandemic time.
 
 ### Who are you and what do you aim by building this project?
 We are student developers, pursuing Bachelors of Technology from Vellore Institute of Technology, Vellore, India.
