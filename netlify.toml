@@ -1,3 +1,2 @@
-[[headers]]
-  for = "./assets/who/gifs/*"
+/assets/who/gifs/*
 	max-age=8640000000
