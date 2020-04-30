@@ -1,4 +1,4 @@
-for = "/assets/who/gifs/*"
-	cache-control = '''
-	max-age=8640000000'''
-	
+[[headers]]
+  for = "/assets/who/gifs/*"
+  [headers.values]
+    cache-control = "public, max-age=8640000000"
