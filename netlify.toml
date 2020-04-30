@@ -1,2 +1,4 @@
-/assets/who/gifs/*
-	max-age=8640000000
+for = "/assets/who/gifs/*"
+	cache-control = '''
+	max-age=8640000000'''
+	
