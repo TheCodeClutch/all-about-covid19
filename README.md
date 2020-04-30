@@ -20,9 +20,22 @@ No
 We are using the offical twitter handles of Government of India to provide news and information, all the guidlines displayed on the website are part of WHO official guidelines, and we are gathering numbers for the website data from this source. We want to thank these guys for making it open source and for helping all of us during this pandemic time.
 
 ### Who are you and what do you aim by building this project?
-We, [Nikhil Singh](https://www.linkedin.com/in/nikhils4/) and [Shreya Maheshwari](https://www.linkedin.com/in/mshreya9/), are student developers, pursuing Bachelors of Technology from Vellore Institute of Technology, Vellore, India.
+We are student developers, pursuing Bachelors of Technology from Vellore Institute of Technology, Vellore, India.
 We aim to give all of you a helping hand in this time of crisis, so that we could fight against it and could also prevent the further spread of the virus. We also aim to give relevant updates to all so that people can make informed decisions. That's our response to this crisis.
 
 ### Got suggestions for us?
 Reach out to us at allaboutcovid19.feedback@gmail.com
+
+
+## Maintainers
+
+1. [Nikhil Singh](https://www.github.com/nikhils4)
+2. [Shreya Maheshwari](https://www.github.com/mshreya9)
+
+
+## Contributions
+
+First of all, thanks a lot for taking out time to contribute. 
+
+If you are new to open source, check out this [guide](https://opensource.guide/how-to-contribute/). Further, for contributing, check out this [guide](CONTRIBUTING.md)
 
