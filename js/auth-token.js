@@ -10,7 +10,7 @@ function getToken(currToken) {
 		return data.json()
 	})
 	.then( val => {
-		localStorage.setItem('TCC_SID', val.token)
+		localStorage.setItem('ABC19_SID', val.token)
 	})
 	.catch( err => {
 		// Token refresh error
