@@ -1,0 +1,10 @@
+﻿https://allaboutcovid19.netlify.app/updates.html
+https://allaboutcovid19.netlify.app/userrequest.html
+https://allaboutcovid19.netlify.app/showrequest.html
+https://allaboutcovid19.netlify.app/index.html
+https://allaboutcovid19.netlify.app/help.html
+https://allaboutcovid19.netlify.app/error.html
+https://allaboutcovid19.netlify.app/about.html
+https://allaboutcovid19.netlify.app/tips.html
+https://allaboutcovid19.netlify.app/statistics.html
+https://allaboutcovid19.netlify.app/
