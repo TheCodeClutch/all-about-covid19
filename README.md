@@ -6,6 +6,8 @@
 
 3. There is also a help station that would allow the user to post requests publicly for any kind of help. Other people can comment on the request for guidance and support.
 
+4. The website also has a section that describes what people should do at this time of crisis, for rural and urban settings. All the guidelines are taken from the WHO(World Health Organization) to keep the users informed.
+
 ### [Check it out here!](https://coviddesk.in)
 
 
