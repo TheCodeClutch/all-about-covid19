@@ -28,8 +28,8 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-        <img src="assets/covid-logo.PNG" alt="covid-logo" style="width: 42px; height:40px;">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light" style="border : 2px solid black">
+        <img src="assets/covid-logo.PNG" alt="covid-logo" style="width: 40px;">
         <a class="navbar-brand" href="index.html" style="padding-left:5px;">COVID-19</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,16 +47,16 @@
                 <li class="nav-item" style="padding-left : 20px; padding-right : 20px">
 					<a class="nav-link" href="tips.html">Guidelines</a>
 				</li>
-                <li class="nav-item" style="padding-left : 20px; padding-right : 20px">
-                    <a style="display: none;" id="login" class="btn btn-outline-dark"
+                <!-- <li class="nav-item" style="padding-left : 20px; padding-right : 20px"> -->
+                    <a style="display: none; padding-left : 20px; padding-right : 20px" id="login" class="btn btn-outline-dark"
                         href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=494631050345-uov5hrao1lv23e78bpmbn6t5argm5qug.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fallaboutcovid-19.herokuapp.com%2Fauth%2Fgoogle&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
                         role="button" style="text-transform:none">
-                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;" src="./assets/google.webp"
+                        <img width="20px" style="margin-bottom: 2px; margin-right: 2px;" src="./assets/google.png"
                             alt="Google sign-in">
                         Login with Google
                     </a>
-                    <span id="user-pic"></span><span id="user-name" style="padding:10px 8px 8px 8px;"></span>
-                </li>
+                    <span id="user-pic"></span><span id="user-name" style="line-height: 40px;"></span>
+                <!-- </li> -->
             </ul>
 
         </div>
