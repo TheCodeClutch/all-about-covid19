@@ -90,7 +90,7 @@ function deletePost(event) {
 					confirmButtonText: 'Ok'
 				})
 				.then(res => {
-					window.location.href = "https://allaboutcovid19.netlify.app/userrequest.html"
+					window.location.href = "https://coviddesk.in/userrequest.html"
 				})
 			} else {
 				Swal.fire({
@@ -99,7 +99,7 @@ function deletePost(event) {
 					text: data.err
 				})
 				.then(res => {
-					window.location.href = "https://allaboutcovid19.netlify.app/userrequest.html"
+					window.location.href = "https://coviddesk.in/userrequest.html"
 				})
 			}
 		})
@@ -156,7 +156,7 @@ window.onload = function () {
 					let data = resp.msg;
 					let content = "";
 					if (data.length === 0) {
-						document.getElementById('login-status').innerHTML = 'No posts to show, post one <a href="https://allaboutcovid19.netlify.app/help.html">here</a>'
+						document.getElementById('login-status').innerHTML = 'No posts to show, post one <a href="https://coviddesk.in/help.html">here</a>'
 						document.getElementById('login-status').style.display = "block";
 						return;
 					}
@@ -272,7 +272,7 @@ function postComment(event) {
 						text: message.msg
 					})
 					.then(res => {
-						window.location.href = "https://allaboutcovid19.netlify.app/userrequest.html"
+						window.location.href = "https://coviddesk.in/userrequest.html"
 					})
 				} else {
 					Swal.fire({

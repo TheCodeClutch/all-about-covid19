@@ -128,7 +128,7 @@ window.onload = function () {
 							document.getElementById('post-heading').innerHTML = "Posts"
 							document.getElementById('posts').style.display = 'block';
 							document.getElementById('posts-container').style.textAlign = "center";
-							document.getElementById('posts-container').innerHTML = 'No posts to show, post one <a href="https://allaboutcovid19.netlify.app/help.html">here</a>';
+							document.getElementById('posts-container').innerHTML = 'No posts to show, post one <a href="https://coviddesk.in/help.html">here</a>';
 							return;
 						}
 						for (let i = data.length - 1; i >= 0; i = i - 1) {
