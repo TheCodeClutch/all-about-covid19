@@ -1,6 +1,6 @@
 document.getElementById("preloader").style.display = "block";
 
-document.onload = () => {
+window.onload = () => {
     document.getElementById("preloader").style.display = "none";
 
     var quotes = ["#StaySafe", "#StayAtHome", "#SocialDistancing", "#IndiaFightsCorona", "#SafeHands", "#TogetherAtHome", "#QuarantineAndChill",
