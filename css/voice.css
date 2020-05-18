@@ -1,11 +1,12 @@
 #slang-button img {
 	max-width: 50%!important;
-	max-height: 50%!important
+	max-height: 50%!important;
 }
 
 #slang-button {
 	border-radius: 50%;
 	padding: 15px;
+	bottom: 9px !important;
 }
 
 

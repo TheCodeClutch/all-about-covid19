@@ -89,36 +89,6 @@ fetch('https://api.covid19india.org/data.json')
 		}
 		document.getElementById('table-data').innerHTML = content;
 		document.getElementById("preloader").style.display = "none";
-		var isChromium = window.chrome;
-		var winNav = window.navigator;
-		var vendorName = winNav.vendor;
-		var isOpera = typeof window.opr !== "undefined";
-		var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
-		var isIOSChrome = winNav.userAgent.match("CriOS");
-		if (isIOSChrome) {
-			var head  = document.getElementsByTagName('head')[0];
-			var link  = document.createElement('link');
-			link.id   = cssId;
-			link.rel  = 'stylesheet';
-			link.href = './css/voice.css';
-			head.appendChild(link);
-		} else if (
-			isChromium !== null &&
-			typeof isChromium !== "undefined" &&
-			vendorName === "Google Inc." &&
-			isOpera === false &&
-			isIEedge === false
-		) {
-			var head  = document.getElementsByTagName('head')[0];
-			var link  = document.createElement('link');
-			link.rel  = 'stylesheet';
-			link.href = './css/voice.css';
-			head.appendChild(link);
-		} else {
-			// NA
-			console.log('niklo patli gali se')
-		}
-
 	})
 
 resize();
