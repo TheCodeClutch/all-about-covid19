@@ -88,14 +88,15 @@ fetch('https://api.covid19india.org/data.json')
 															</tr>`
 		}
 		document.getElementById('table-data').innerHTML = content;
-
+		document.getElementById("preloader").style.display = "none";
+		
 
 	})
 
 resize();
 
-window.onload = () => {
-	document.getElementById("preloader").style.display = "none";
+
+
 	window.addEventListener('resize', () => {
 		resize();
 	})
@@ -124,5 +125,6 @@ window.onload = () => {
 			}, i * 4000);
 		}
 
-}
+
+
 

@@ -6,7 +6,7 @@ body {
 	height : 100vh;
 	z-index : 100;
 	text-align: center;
-	background: white url('./assets/preloader-md.gif') center center no-repeat;
+	background: white url('../assets/preloader-md.gif') center center no-repeat;
 }
 
 #cover-c{
