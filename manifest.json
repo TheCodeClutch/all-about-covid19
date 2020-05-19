@@ -1,8 +1,8 @@
 {
   "short_name": "Covid Desk",
   "name": "Covid Desk",
-  "theme_color": "#4A90E2",
-  "background_color": "#F7F8F9",
+  "theme_color": "#db4938",
+  "background_color": "#fdfdfd",
   "display": "standalone",
   "icons": [
     {
@@ -26,5 +26,5 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "https://coviddesk.in/"
+  "start_url": "index.html"
 }
