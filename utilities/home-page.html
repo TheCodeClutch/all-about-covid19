@@ -51,34 +51,33 @@
 
 		gtag('config', 'UA-164943211-1');
 	</script>
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
+	<link rel="manifest" href="./assets/favicon_io/site.webmanifest">
 	
-	<meta name="google-site-verification" content="6rYSlJLD1rddeYJFqwfzLU1IfY3eOsx5KHUBSLfNZUs" />
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<!--Google fonts  -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="./css/statistics.css">
-	<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
-	<link rel="manifest" href="./assets/favicon_io/site.webmanifest">
-	<link rel="prefetch" href="./css/voice.css">
-	<script rel="prefetch" src="https://demo.slanglabs.in/utils/dist/covid19-india-voice-assistant.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="./css/index.css">
+	<title>COVID DESK | HOME</title>
 
-	<title>COVID DESK | STATS</title>
 </head>
 
-<body>
+<body class="home-bg">
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12" id="preloader">
-
 			</div>
 		</div>
 	</div>
-
 	<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
 		<img src="assets/covid-logo.PNG" alt="covid-logo" style="width: 42px; height:40px;">
 		<a class="navbar-brand" href="index.html" style="padding-left:5px;">COVID-19</a>
@@ -92,11 +91,12 @@
 				<li class="nav-item" style="padding-left : 20px; padding-right : 20px">
 					<a class="nav-link" href="./updates.html">Updates</a>
 				</li>
-				<li class="nav-item active" style="padding-left : 20px; padding-right : 20px">
-					<a class="nav-link" href="statistics.html">Data & Insights</a>
-				</li>
 				<li class="nav-item" style="padding-left : 20px; padding-right : 20px">
-					<a class="nav-link" href="./help.html">Help & Support</a>
+					<a class="nav-link" href="./statistics.html">Data & Insights</a>
+				</li>
+				<li class="nav-item" style="padding-left : 20px; padding-right : 20px;">
+					<a class="nav-link" href="help.html">Help & Support</h6>
+						</span></a>
 				</li>
 				<li class="nav-item" style="padding-left : 20px; padding-right : 150px;">
 					<a class="nav-link" href="tips.html">Guidelines</a>
@@ -105,97 +105,49 @@
 
 		</div>
 	</nav>
-	<div class="container-fluid" style="margin-bottom : 100px">
-		<div class="row" style="text-align: center;">
-			<!-- HashTags and Quotes -->
-			<div class="col-12" style="background-color: #FFFAFA; height:30px;">
-				<h6 style="font-size:14px; padding:5px 0px;" id="hashtag"></h6>
-			</div>
-			<div class="col-12" style="padding-top: 50px;">
-				<h2>Data & Insights</h2>
-			</div>
-		</div>
-		<div class="row" style="text-align : center; padding-top : 50px">
-			<div class="col-3" id="cover-c">
-				<div class="card-cover">
-					<div class="col-12 title-count" id="c">
-						Confirmed
-					</div>
-					<div class="col-12 count">
-						<span id="count-confirmed"></span><sup class="inc-section">&#8593;<span
-								id="inc-confirmed"></span></sup>
-					</div>
-				</div>
-			</div>
-			<div class="col-3" id="cover-a">
-				<div class="card-cover">
-					<div class="col-12 title-count" id="a">
-						Active
-					</div>
-					<div class="col-12 count">
-						<span id="count-active"></span>
-					</div>
-				</div>
-			</div>
-			<div class="col-3" id="cover-r">
-				<div class="card-cover">
-					<div class="col-12 title-count" id="r">
-						Recovered
-					</div>
-					<div class="col-12 count">
-						<span id="count-recovered"></span><sup class="inc-section">&#8593;<span
-								id="inc-recovered"></span></sup>
-					</div>
-				</div>
-			</div>
-			<div class="col-3" id="cover-d">
-				<div class="card-cover">
-					<div class="col-12 title-count" id="d">
-						Deceased
-					</div>
-					<div class="col-12 count">
-						<span id="count-deceased"></span><sup class="inc-section">&#8593;<span
-								id="inc-deceased"></span></sup>
-					</div>
-				</div>
-			</div>
-		</div>
-
+	<div class="col-12" style="background-color: #FFFAFA; height:30px; text-align: center;">
+		<h6 style="font-size:14px; padding:5px 0px;" id="hashtag"></h6>
+	</div>
+	<div class="container-fluid" id="cover">
 		<div class="row">
-			<div class="col-12 text-muted" style="text-align: center; margin-top : 20px">
-				Last update time : <span id="update-time"></span>
+			<div class="col-lg-3 col-12"></div>
+			<div class="col-lg-6 col-12" style="padding : 20px">
+				<img id="covid" src="./assets/covid.png"
+					style="position: absolute; height : 80px; transform: translate(400px, -20px);">
+				<h2><strong>About COVID-19</strong></h2>
+				<!-- About COVID -->
+				<p>
+					Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered
+					coronavirus. Most
+					people infected with the COVID-19 virus will experience mild to moderate respiratory illness and
+					recover
+					without requiring special treatment. The best way to prevent and slow down transmission is be well
+					informed
+					about
+					the
+					COVID-19 virus, the disease it causes and how it spreads.
+				</p>
+				<p>
+					Lets learn more about it, spread awareness & save lives!
+				</p>
+				<a href="updates.html">
+					<button class="btn btn-primary" style="padding:10px; margin-top : 25px"><strong
+							style="padding-right:5px;">In this together</strong>
+						<span><i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></span></button>
+				</a>
 			</div>
-		</div>
-
-
-		<div class="row" style="margin-top : 50px">
-			<div class="col-lg-2"></div>
-			<div class="col-12 col-lg-8 table-responsive">
-				<table class="table">
-					<thead class="thead-light">
-						<tr>
-							<th scope="col" id="ts">State</th>
-							<th scope="col" id="tc">Confirmed</th>
-							<th scope="col" id="ta">Active</th>
-							<th scope="col" id="tr">Recovered</th>
-							<th scope="col" id="td">Deceased</th>
-						</tr>
-					</thead>
-					<tbody id="table-data">
-					</tbody>
-				</table>
-			</div>
-			<div class="col-lg-2">
-			</div>
+			<div class="col-lg-3 col-12"></div>
 		</div>
 	</div>
 
+
 	<!-- Footer -->
 	<footer>
-		<div style="padding:10px 0px;">
+		<div style="padding:10px 0px; margin-top : 100px">
 			&copy; 2020 | <a href="about.html" style="text-decoration: none;">Know about us</a>
 		</div>
 	</footer>
+
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -206,8 +158,9 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
+
+	<script src="./js/index.js"></script>
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5eaa39ffd8f51fb5"></script>
-	<script src="./js/statistics.js"></script>
 
 </body>
 
