@@ -1,5 +1,6 @@
 const coviddesk = "coviddesk"
 const assets = [
+	"/",
   "./index.html",
   "./css/statistics.css",
 	"./js/statistics.js",

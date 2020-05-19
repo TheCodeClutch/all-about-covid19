@@ -1,8 +1,8 @@
 {
   "short_name": "Covid Desk",
   "name": "Covid Desk",
-  "theme_color": "#db4938",
-  "background_color": "#fdfdfd",
+  "theme_color": "#f8f9fa",
+  "background_color": "#f8f9fa",
   "display": "standalone",
   "icons": [
     {
