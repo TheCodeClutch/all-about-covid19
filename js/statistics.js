@@ -39,7 +39,6 @@ fetch('https://api.covid19india.org/data.json')
 		return res.json();
 	})
 	.then(data => {
-		//fillChart(data)
 		document.getElementById('count-confirmed').innerHTML = data.statewise[0].confirmed
 		document.getElementById('count-recovered').innerHTML = data.statewise[0].recovered
 		document.getElementById('count-deceased').innerHTML = data.statewise[0].deaths
@@ -198,4 +197,3 @@ function drawGraph(data) {
 		}
 	});
 }
-
