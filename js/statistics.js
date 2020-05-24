@@ -39,6 +39,7 @@ fetch('https://api.covid19india.org/data.json')
 		return res.json();
 	})
 	.then(data => {
+		//fillChart(data)
 		document.getElementById('count-confirmed').innerHTML = data.statewise[0].confirmed
 		document.getElementById('count-recovered').innerHTML = data.statewise[0].recovered
 		document.getElementById('count-deceased').innerHTML = data.statewise[0].deaths
@@ -89,10 +90,10 @@ fetch('https://api.covid19india.org/data.json')
 		}
 		document.getElementById('table-data').innerHTML = content;
 		document.getElementById("preloader").style.display = "none";
+		drawGraph(data)
 	})
 
 resize();
-
 
 
 window.addEventListener('resize', () => {
@@ -123,6 +124,78 @@ for (let i = 0; i < quotes.length; i++) {
 	}, i * 4000);
 }
 
+function drawGraph(data) {
 
+	let indiaChart = document.getElementById('india-chart');
+	let caseTimeArray = data.cases_time_series;
+	let dailyConf = [];
+	let dailyRec = [];
+	let dailyDec = [];
+	let label = []
+	for (let i = 0; i < caseTimeArray.length; i++) {
+		dailyConf.push(Number(caseTimeArray[i].totalconfirmed));
+		dailyRec.push(Number(caseTimeArray[i].totalrecovered));
+		dailyDec.push(Number(caseTimeArray[i].totaldeceased));
+		label.push(caseTimeArray[i].date.substring(0, 6))
+	}
+	let mixedChart = new Chart(indiaChart, {
+		type: 'line',
 
+		data: {
+
+			datasets: [{
+				label: 'Deceased',
+				data: dailyDec,
+				borderColor: 'rgba(108,117,125,1)',
+				backgroundColor: 'rgba(108,117,125,1)',
+				pointStyle: 'dash',
+			
+			},{
+				label: 'Recovered',
+				data: dailyRec,
+				borderColor: 'rgba(40,167,69,.8)',
+				backgroundColor: 'rgba(40,167,69,.8)',
+				pointStyle: 'dash'
+			},{
+				label: 'Confirmed',
+				data: dailyConf,
+				borderColor: 'rgba(255,7,20,.4)',
+				backgroundColor: 'rgba(255,7,20,.4)',
+				pointStyle: 'dash'
+			}],
+			labels: label
+		},
+		options: {
+			scales: {
+				xAxes: [{
+					 gridLines: {
+							display: false
+					 }
+				}],
+				yAxes: [{
+					 gridLines: {
+							display: false
+					 },
+					 ticks: {
+						 beginAtZero: false
+					 },
+					 position: 'right',
+					 type: 'linear'
+				}]
+		 },
+			backgroundColor: 'rgba(40,167,69,.8)',
+			responsive: true,
+			maintainAspectRatio: true,
+			title: {
+				display: true,
+				text: "COVID'19 Outbreak Trend",
+				fontSize: 25
+			},
+			legend: {
+				display: true,
+				position: 'bottom',
+			},
+		}
+	});
+}
 
