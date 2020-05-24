@@ -51,7 +51,7 @@
 
 		gtag('config', 'UA-164943211-1');
 	</script>
-	
+
 	<!-- Google site verification -->
 	<meta name="google-site-verification" content="6rYSlJLD1rddeYJFqwfzLU1IfY3eOsx5KHUBSLfNZUs" />
 
@@ -60,16 +60,22 @@
 	<!--Google fonts  -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./css/statistics.css">
-
 	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon_io/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon_io/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon_io/favicon-16x16.png">
-	<link rel="manifest" href="./assets/favicon_io/site.webmanifest">
-	<link rel="prefetch" href="./css/voice.css">
-	<script rel="prefetch" src="https://demo.slanglabs.in/utils/dist/covid19-india-voice-assistant.js" charset="utf-8"></script>
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png" />
+	<meta name="apple-mobile-web-app-status-bar" content="#f8f9fa" />
+	<link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#f8f9fa">
+	<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+	<meta name="msapplication-TileColor" content="#f8f9fa">
+	<meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
+	<meta name="theme-color" content="#f8f9fa">
+	<link rel="stylesheet" href="./css/voice.css">
+	<link rel="manifest" href="./manifest.json">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://coviddesk.in/apple-icon.png">
+	<link rel="shortcut icon" href="./assets/favicon_io/favicon.ico" type="image/x-icon">
 
-	<title>COVID DESK | STATISTICS</title>
+	<title>COVID DESK</title>
 </head>
 
 <body>
@@ -125,8 +131,7 @@
 						Confirmed
 					</div>
 					<div class="col-12 count">
-						<span id="count-confirmed"></span><sup class="inc-section">&#8593;<span
-								id="inc-confirmed"></span></sup>
+						<span id="count-confirmed"></span><sup class="inc-section">&#8593;<span id="inc-confirmed"></span></sup>
 					</div>
 				</div>
 			</div>
@@ -146,8 +151,7 @@
 						Recovered
 					</div>
 					<div class="col-12 count">
-						<span id="count-recovered"></span><sup class="inc-section">&#8593;<span
-								id="inc-recovered"></span></sup>
+						<span id="count-recovered"></span><sup class="inc-section">&#8593;<span id="inc-recovered"></span></sup>
 					</div>
 				</div>
 			</div>
@@ -157,8 +161,7 @@
 						Deceased
 					</div>
 					<div class="col-12 count">
-						<span id="count-deceased"></span><sup class="inc-section">&#8593;<span
-								id="inc-deceased"></span></sup>
+						<span id="count-deceased"></span><sup class="inc-section">&#8593;<span id="inc-deceased"></span></sup>
 					</div>
 				</div>
 			</div>
@@ -206,7 +209,25 @@
 			&copy; 2020 | <a href="about.html" style="text-decoration: none;">Know about us</a>
 		</div>
 	</footer>
+	<script>
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", function () {
+				navigator.serviceWorker
+					.register("./sw.js")
+					.then(res => console.log("service worker registered"))
+					.catch(err => console.log("service worker not registered", err))
+			})
+		}
+		const isIos = () => {
+			const userAgent = window.navigator.userAgent.toLowerCase();
+			return /iphone|ipad|ipod/.test(userAgent);
+		}
+		const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
 
+		if (isIos() && !isInStandaloneMode()) {
+			this.setState({ showInstallMessage: true });
+		}
+	</script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
@@ -218,7 +239,8 @@
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5eaa39ffd8f51fb5"></script>
 	<script src="./js/statistics.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script src="https://demo.slanglabs.in/utils/dist/covid19-india-voice-assistant.js" charset="utf-8"></script>
+
 </body>
 
 </html>

@@ -1,0 +1,30 @@
+{
+  "short_name": "Covid Desk",
+  "name": "Covid Desk",
+  "theme_color": "#f8f9fa",
+  "background_color": "#f8f9fa",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "assets/favicon_io/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "assets/favicon_io/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "assets/favicon_io/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "assets/favicon_io/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "index.html"
+}
