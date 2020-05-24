@@ -123,87 +123,87 @@ for (let i = 0; i < quotes.length; i++) {
 		document.getElementById("hashtag").innerHTML = quotes[i];
 	}, i * 4000);
 }
+
+
 // India graph
 function drawGraphShreya(data) {
 	let indiaChart = document.getElementById('india-chart');
-
-	console.log('fdhgjhkjlkhkgjfhdsgfhgjhk')
 	let caseTimeArray = data.cases_time_series;
-	let totaltestsArray = data.tested;
+	//let totaltestsArray = data.tested;
 	let dailyConf = [];
 	let dailyRec = [];
 	let dailyDec = [];
-	let dailyTest = [];
+	//let dailyTest = [];
 
 	for (let i = 0; i < caseTimeArray.length; i++) {
 		dailyConf.push(caseTimeArray[i].dailyconfirmed);
 		dailyRec.push(caseTimeArray[i].dailyrecovered);
 		dailyDec.push(caseTimeArray[i].dailydeceased);
 	}
-	let j = 0;
-	for (let i = 0; i < caseTimeArray.length - totaltestsArray.length; i++) {
-		dailyTest.push(0)
-		j++
-	}
-	for (let i = 0; i < totaltestsArray.length; i++) {
-		dailyTest.push(totaltestsArray[j].totalsamplestested);
-	}
+	//let j = 0;
+	// for (let i = 0; i < caseTimeArray.length - totaltestsArray.length; i++) {
+	// 	dailyTest.push(0)
+	// 	j++
+	// }
+	// for (let i = 0; i < totaltestsArray.length; i++) {
+	// 	dailyTest.push(totaltestsArray[j].totalsamplestested);
+	// }
 
 
 
-	console.log(dailyTest)
+// 	console.log(dailyTest)
 
-	let dataConf = {
-		label: 'Daily Confirmed',
-		data: dailyConf,
-		borderColor: '#FF073A',
-		lineTension: 0.3,
-	};
+// 	let dataConf = {
+// 		label: 'Daily Confirmed',
+// 		data: dailyConf,
+// 		borderColor: '#FF073A',
+// 		lineTension: 0.3,
+// 	};
 
-	let dataRec = {
-		label: 'Daily Recovered',
-		data: dailyRec,
-		borderColor: '#28a745'
-	};
+// 	let dataRec = {
+// 		label: 'Daily Recovered',
+// 		data: dailyRec,
+// 		borderColor: '#28a745'
+// 	};
 
-	let dataDec = {
-		label: 'Daily Deceased',
-		data: dailyDec,
-		borderColor: '#6c757d'
-	};
+// 	let dataDec = {
+// 		label: 'Daily Deceased',
+// 		data: dailyDec,
+// 		borderColor: '#6c757d'
+// 	};
 
-	let dataTest = {
-		label: 'Daily Tests',
-		data: dailyTest,
-		borderColor: '#007bff'
-	};
+// 	let dataTest = {
+// 		label: 'Daily Tests',
+// 		data: dailyTest,
+// 		borderColor: '#007bff'
+// 	};
 
-	let totalData = {
-		//labels: ['Date'],
-		datasets: [dataConf, dataRec, dataDec, dataTest]
-	};
+// 	let totalData = {
+// 		//labels: ['Date'],
+// 		datasets: [dataConf, dataRec, dataDec, dataTest]
+// 	};
 
-	let lineChart = new Chart(indiaChart, {
-		type: 'line',
-		data: totalData,
-		options: {
-			titile: {
-				display: true,
-				text: "COVID'19 Outbreak",
-				fontSize: 25
-			},
-			legend: {
-				display: true,
-				position: 'right'
-			},
-			layout: {
-				padding: {
-					top: 100
-				}
-			}
-		}
-	});
-}
+// 	let lineChart = new Chart(indiaChart, {
+// 		type: 'line',
+// 		data: totalData,
+// 		options: {
+// 			titile: {
+// 				display: true,
+// 				text: "COVID'19 Outbreak",
+// 				fontSize: 25
+// 			},
+// 			legend: {
+// 				display: true,
+// 				position: 'right'
+// 			},
+// 			layout: {
+// 				padding: {
+// 					top: 100
+// 				}
+// 			}
+// 		}
+// 	});
+// }
 
 function drawGraph(data) {
 
