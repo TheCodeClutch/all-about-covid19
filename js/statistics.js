@@ -39,6 +39,7 @@ fetch('https://api.covid19india.org/data.json')
 		return res.json();
 	})
 	.then(data => {
+		//fillChart(data)
 		document.getElementById('count-confirmed').innerHTML = data.statewise[0].confirmed
 		document.getElementById('count-recovered').innerHTML = data.statewise[0].recovered
 		document.getElementById('count-deceased').innerHTML = data.statewise[0].deaths
@@ -89,10 +90,10 @@ fetch('https://api.covid19india.org/data.json')
 		}
 		document.getElementById('table-data').innerHTML = content;
 		document.getElementById("preloader").style.display = "none";
+		drawGraph(data)
 	})
 
 resize();
-
 
 
 window.addEventListener('resize', () => {
@@ -122,7 +123,159 @@ for (let i = 0; i < quotes.length; i++) {
 		document.getElementById("hashtag").innerHTML = quotes[i];
 	}, i * 4000);
 }
+// India graph
+function drawGraphShreya(data) {
+	let indiaChart = document.getElementById('india-chart');
+
+	console.log('fdhgjhkjlkhkgjfhdsgfhgjhk')
+	let caseTimeArray = data.cases_time_series;
+	let totaltestsArray = data.tested;
+	let dailyConf = [];
+	let dailyRec = [];
+	let dailyDec = [];
+	let dailyTest = [];
+
+	for (let i = 0; i < caseTimeArray.length; i++) {
+		dailyConf.push(caseTimeArray[i].dailyconfirmed);
+		dailyRec.push(caseTimeArray[i].dailyrecovered);
+		dailyDec.push(caseTimeArray[i].dailydeceased);
+	}
+	let j = 0;
+	for (let i = 0; i < caseTimeArray.length - totaltestsArray.length; i++) {
+		dailyTest.push(0)
+		j++
+	}
+	for (let i = 0; i < totaltestsArray.length; i++) {
+		dailyTest.push(totaltestsArray[j].totalsamplestested);
+	}
 
 
 
+	console.log(dailyTest)
 
+	let dataConf = {
+		label: 'Daily Confirmed',
+		data: dailyConf,
+		borderColor: '#FF073A',
+		lineTension: 0.3,
+	};
+
+	let dataRec = {
+		label: 'Daily Recovered',
+		data: dailyRec,
+		borderColor: '#28a745'
+	};
+
+	let dataDec = {
+		label: 'Daily Deceased',
+		data: dailyDec,
+		borderColor: '#6c757d'
+	};
+
+	let dataTest = {
+		label: 'Daily Tests',
+		data: dailyTest,
+		borderColor: '#007bff'
+	};
+
+	let totalData = {
+		//labels: ['Date'],
+		datasets: [dataConf, dataRec, dataDec, dataTest]
+	};
+
+	let lineChart = new Chart(indiaChart, {
+		type: 'line',
+		data: totalData,
+		options: {
+			titile: {
+				display: true,
+				text: "COVID'19 Outbreak",
+				fontSize: 25
+			},
+			legend: {
+				display: true,
+				position: 'right'
+			},
+			layout: {
+				padding: {
+					top: 100
+				}
+			}
+		}
+	});
+}
+
+function drawGraph(data) {
+
+	let indiaChart = document.getElementById('india-chart');
+	let caseTimeArray = data.cases_time_series;
+	let dailyConf = [];
+	let dailyRec = [];
+	let dailyDec = [];
+	let label = []
+	for (let i = 0; i < caseTimeArray.length; i++) {
+		dailyConf.push(Number(caseTimeArray[i].totalconfirmed));
+		dailyRec.push(Number(caseTimeArray[i].totalrecovered));
+		dailyDec.push(Number(caseTimeArray[i].totaldeceased));
+		label.push(caseTimeArray[i].date.substring(0, 6))
+	}
+	let mixedChart = new Chart(indiaChart, {
+		type: 'line',
+
+		data: {
+
+			datasets: [{
+				label: 'Deceased',
+				data: dailyDec,
+				borderColor: 'rgba(108,117,125,1)',
+				backgroundColor: 'rgba(108,117,125,1)',
+				pointStyle: 'dash',
+			
+			},{
+				label: 'Recovered',
+				data: dailyRec,
+				borderColor: 'rgba(40,167,69,.8)',
+				backgroundColor: 'rgba(40,167,69,.8)',
+				pointStyle: 'dash'
+			},{
+				label: 'Confirmed',
+				data: dailyConf,
+				borderColor: 'rgba(255,7,20,.4)',
+				backgroundColor: 'rgba(255,7,20,.4)',
+				pointStyle: 'dash'
+			}],
+			labels: label
+		},
+		options: {
+			scales: {
+				xAxes: [{
+					 gridLines: {
+							display: false
+					 }
+				}],
+				yAxes: [{
+					 gridLines: {
+							display: false
+					 },
+					 ticks: {
+						 beginAtZero: false
+					 },
+					 position: 'right',
+					 type: 'linear'
+				}]
+		 },
+			backgroundColor: 'rgba(40,167,69,.8)',
+			responsive: true,
+			maintainAspectRatio: true,
+			title: {
+				display: true,
+				text: "COVID'19 Outbreak Trend",
+				fontSize: 25
+			},
+			legend: {
+				display: true,
+				position: 'bottom',
+			},
+		}
+	});
+}

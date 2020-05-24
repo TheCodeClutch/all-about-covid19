@@ -44,9 +44,13 @@ footer {
 	.inc-section {
 		font-size: 14px;
 	}
+	canvas{
+		width: 100% !important; 
+		height: auto !important
+	}
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 600px) {
 	.count {
 		padding-top : 10px; 
 		padding-bottom : 10px; 
@@ -63,8 +67,10 @@ footer {
 	.inc-section {
 		font-size: 10px;
 	}
+	canvas{
+		display: none !important;
+	}
 }
-
 
 .navbar-light .navbar-toggler {
 	border : none;
